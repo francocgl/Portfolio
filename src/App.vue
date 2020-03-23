@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-      <bar />
+      <Header />
   </div>
 </template>
     
 <script>
-import Bar from '@/views';
+import Header from '@/views';
 
 export default {
   name: 'app',
   components: {
-    Bar
+    Header
   }
 }
 </script>
 
 <style>
- @import './main.scss'
+    @import './main.scss';
 </style>
