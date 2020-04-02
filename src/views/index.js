@@ -1,3 +1,4 @@
-import Header from './header';
+import Home from './home';
+import Portfolio from './portfolio';
 
-export default  Header;
+export { Portfolio, Home };

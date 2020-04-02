@@ -1,0 +1,23 @@
+*{
+    font-family: arial;
+}
+li{
+    list-style: none;
+}
+ul{
+    padding: 0;
+}
+a:hover{
+    text-decoration: none !important;
+}
+:root{
+    --darkblue-color : #112A40; 
+    --blue-color : #163A59; 
+    --grey-color : #7A96AB; 
+    --white-color : #F2EAED; 
+}
+section{
+    height: 100vh;
+    padding: 20px;
+    background-color: var(--white-color);
+}
