@@ -1,7 +1,10 @@
 <template>
     <div>
-        <section id="about-section">
-            <h2>About</h2>
+        <section  id="about-section">
+            <div class="container about">
+                <h2>Acerca</h2>
+
+            </div>
         </section>
     </div>
 </template>
@@ -12,6 +15,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    h2{
+        font-weight: 600;
+        font-size: 3em;
+        color: #fff;
+    }
+    .about{
+        background: var(--darkblue-color);
+        margin-top: 50px;
+        padding: 20px;
+    }
 </style>

@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+
 *{
-    font-family: arial;
+    font-family: 'Work Sans', sans-serif;
 }
 li{
     list-style: none;
@@ -14,10 +19,16 @@ a:hover{
     --darkblue-color : #112A40; 
     --blue-color : #163A59; 
     --grey-color : #7A96AB; 
-    --white-color : #F2EAED; 
+    --white-color : #FFF;
 }
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
 section{
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
+    position: relative;
     background-color: var(--white-color);
 }

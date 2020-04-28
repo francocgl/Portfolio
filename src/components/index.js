@@ -1,3 +1,7 @@
 import Footer from './footer';
 
-export default Footer ;
+import Redes from './redes';
+
+import ProgressBar from './progressbar';
+
+export { Footer, Redes, ProgressBar }  ;

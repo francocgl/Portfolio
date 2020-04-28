@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h2>Portfolio</h2>
+        <div class="container">
+            <h2>Portfolio</h2>
+
+        </div>
     </div>
 </template>
 

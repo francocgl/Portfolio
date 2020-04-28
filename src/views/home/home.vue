@@ -1,6 +1,7 @@
 <template>
   <div>
         <Header />
+        <ProgressBar />
         <About />
         <Portfolio />
         <Footer />
@@ -9,7 +10,7 @@
 
 <script>
     
-    import Footer from '@/components'
+    import {Footer, ProgressBar} from '@/components'
 
     import Header from './header'
 
@@ -21,6 +22,7 @@ export default {
     components:{
         Footer,
         Header,
+        ProgressBar,
         About,
         Portfolio
     }
