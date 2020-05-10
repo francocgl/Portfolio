@@ -28,7 +28,7 @@ $(window).scroll( function (){
     .progressbar, .progressbar-2{
         position: fixed;
         top: 50%;
-        left:20px;
+        left:50px;
         background: var(--grey-color);
         width: 1.5px;
         z-index: 1;
@@ -37,5 +37,12 @@ $(window).scroll( function (){
     .progressbar{
         background: chocolate;
         z-index: 2;
+    }
+
+     @media (max-width: 768px){
+        .progressbar, .progressbar-2{
+            display: none;
+         
+        }
     }
 </style>

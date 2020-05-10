@@ -4,4 +4,6 @@ import Redes from './redes';
 
 import ProgressBar from './progressbar';
 
-export { Footer, Redes, ProgressBar }  ;
+import Header from './header';
+
+export { Footer, Redes, ProgressBar, Header }  ;

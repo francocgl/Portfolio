@@ -127,6 +127,13 @@
        transform: translate( -25px, 0px);
         
     }
+
+    @media (max-width: 768px){
+        .redes{
+            display: none;
+         
+        }
+    }
     
  
 </style>

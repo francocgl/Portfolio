@@ -2,9 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap');
+
+
 
 *{
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Work', sans-serif;
+}
+html {
+  scroll-behavior: smooth;
 }
 li{
     list-style: none;
@@ -28,7 +34,33 @@ a:hover{
 
 section{
     min-height: 100vh;
-    padding: 20px;
+    padding: 50px 0;
     position: relative;
     background-color: var(--white-color);
+    
 }
+.section-title{
+    margin: 50px 0 20px;
+}
+.section-title h1{
+    font-weight: 700;
+    font-size: 7vh;
+    color:  var(--darkblue-color);
+}
+
+.section-title h2{
+    color: var(--grey-color);
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.section-number{
+    font-weight: 800;
+    font-size: 6em;
+    color: var(--grey-color);
+    
+}
+    
