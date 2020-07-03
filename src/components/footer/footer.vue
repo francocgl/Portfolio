@@ -1,75 +1,115 @@
 <template>
     <div>
         <footer>
-            <div class="footer-content">
-                    <div class="redes">
-                       
-                        <ul >
-                            <li><a href="">Instragram </a></li>
-                            <li><a href="">Behance </a></li>
-                            <li><a href="">Linkedin </a></li>
-                        </ul>
-
-                    </div>
-                    
-                    <div class="copy">
-                        <span>@copyright 2020 | Franco Martin </span>
-                    </div>
-
-                    <div class="top">
-                        <a href="">Ir Arriba</a>
-                    </div>
+            
+            <div class="footer-item copy">
+                <span>@copyright 2020 | Franco Martin </span>
             </div>
+           
+            <div class="footer-item redes">
+                
+                <ul >
+                    <li><a href="">Instragram </a></li>
+                    <li><a href="">Behance </a></li>
+                    <li><a href="">Linkedin </a></li>
+                </ul>
+
+            </div>
+            
+
+            <div class="footer-item toTop">
+                <h4 @click="scrollToTop()">
+                    Top<font-awesome-icon 
+                                class=" redes-icon ml-1"
+                                :icon="['fas', 'chevron-up']"
+                        
+                            />
+                    </h4>
+            </div>
+           
         </footer>
 
     </div>
 </template>
 
 <script>
+
+    import { library } from '@fortawesome/fontawesome-svg-core';
+   
+    import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+    
+    library.add(faChevronUp);
+
     export default {
-        
+        methods:{
+            scrollToTop(){
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
     }
 </script>
 
 <style lang="scss" scoped>
-  footer{
-      padding: 20px 0;
-      display: grid;
-      grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
-  }
-  footer .redes ul{
-      display: flex;
-      justify-content: space-between;
-      margin: 0;
-  }
-   footer .redes a{
+    footer{
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr ;
+        background: var(--darkblue-color);
+        align-items: center;
+
+    }
+
+    .footer-item{
+            padding: 40px 0;
+    }
+    .redes{
+            grid-column: 3 / span 2;
+            justify-self: center;
+        
+    }
+    .redes ul{
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+  .redes a{
        font-size: 0.9em;
        color: var(--grey-color);
+       padding: 20px
    }
-   footer .footer-content{
-      border-top: 1.5px solid var(--grey-color);
-       grid-column: 2 / span 4;
-       padding: 30px 10px;
-       display: grid;
-       grid-template-columns: repeat(4, 1fr);
-       grid-gap: 10px;
-       align-items: center;
-       color: var(--grey-color)
 
+   .toTop{
+       grid-column: 5 / span 1;
+       /* background: white; */
+       display: flex;
+       justify-content: flex-end;
    }
-   footer .top{
-       grid-column: 4;
-       justify-self: end;
-       
+
+    .toTop h4{
+        color: #fff;
+        font-size: 1.4em;
+        cursor: pointer;
+        font-weight: 600;
    }
    footer .copy{
-       grid-column: 2 / span 2;
-       justify-self: center;;
-       font-size: 0.9em;
+        grid-column: 2/ span 1;
+        color: var(--grey-color);
+        font-size: 0.9em;
    }
 
-   footer .top a{
-        color: var(--blue-color);
-        font-size: 1.5em;
-   }
+    @media (max-width: 768px){
+        
+        .footer-item{
+            grid-column: 2 / span 4;
+            padding: 10px 0;
+            justify-self: center ;
+         }
+
+        footer .copy{
+            grid-column: 2/ span 4;
+            justify-self: center ;
+            padding-top: 20px;
+        }
+        
+    }
 </style>

@@ -1,5 +1,9 @@
 <template>
     <div>
+        <Header :passingRouter="true"/>
+
+        <Redes />
+
         <section  id="contact-section">
             <div class="contact-content">
 
@@ -85,16 +89,25 @@
            
              </div>
         </section>
+
+        <Footer />
     </div>
 </template>
 
 <script>
+  
+    import { Footer, Header, Redes } from '@/components';
 
     import {  TimelineLite } from 'gsap';
 
     import $ from 'jquery';
 
 export default {
+    components:{
+        Footer,
+        Header,
+        Redes
+    },
     data(){
         return{
             errors: [],
@@ -184,7 +197,6 @@ export default {
         grid-template-rows: auto  1fr;
     }
 
-   
     .section-title{
         grid-row: 2;
         grid-column: 2 / span 2;
@@ -192,7 +204,7 @@ export default {
         margin: 0;
     }
     .section-title h1{
-        color: #fff;
+        color: var(--darkblue-color);
     }
 
     .contact-content{
@@ -229,7 +241,7 @@ export default {
         color: var(--grey-color);
     }
     .info-container li:nth-child(2){
-        color: #fff;
+        color: var(--darkblue-color);
         font-size: 1em;
     }
     .form-control{
@@ -243,7 +255,7 @@ export default {
         padding: 10px ;
     }
     .form-control::placeholder{
-        color: #fff;
+        color: var(--darkblue-color);
         font-size: 1em;
     }
     
@@ -271,6 +283,10 @@ export default {
         
     }
     @media (max-width: 758px) {
+
+        #contact-section{
+            grid-template-rows: 100px 1fr;
+        }
         .contact-form, .contact-info{
             grid-column: 2 / span 5;
         }

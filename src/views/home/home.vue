@@ -1,42 +1,37 @@
 <template>
   <div>
-        <Header />
-        <main>
+     
             <NavWrapper />
-            <ProgressBar />
-            <About />
-            <Services />
-            <Portfolio />
-            <Contact />
-        </main>
+        <Pointer />
+
         <Footer />
   </div>
 </template>
 
 <script>
     
-    import {Footer, ProgressBar, Header} from '@/components'
+    import {Footer,  Pointer} from '@/components'
 
     import NavWrapper from './nav-wrapper'
 
-    import Portfolio from './portfolio'
-    
-    import Contact from './contact'
-    
-    import Services from './services'
-   
-   import About from './about'
+    import $ from 'jquery';
+
+    import {  TimelineLite } from 'gsap';
 
 export default {
     components:{
         Footer,
-        Header,
+        Pointer,
         NavWrapper,
-        ProgressBar,
-        About,
-        Services,
-        Contact,
-        Portfolio
+    
+    },
+    created(){
+        var t1 = new TimelineLite();
+
+        t1.from( $('#services-section'),1.5, {
+            opacity: 0,
+                x: 50
+        });
     }
 }
 </script>

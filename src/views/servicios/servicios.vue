@@ -1,15 +1,16 @@
 <template>
     <div>
-        <section  id="services-section">
-            
+         <Header :passingRouter="true"/>
+        <main>
 
-           
+            <section  id="services-section">
+            
                 <div class="section-content">
                     <div class="services-item-1 section-title">
-                        <h2 class="animate-header">Diseñador Gráfico / Web</h2>
+                        <h2 class="animate-header">que cosas hago</h2>
                         <h1 class="animate-header">Servicios</h1>
                         <p class="animate-header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sint magnam dolore eum, porro iste non sunt similique nobis nostrum? Neque animi excepturi incidunt voluptatibus dolore, illo cumque dicta minus. </p>
-                        <router-link to="/servicios" class="button animate-header"> Ver Servicios
+                        <router-link to="/portfolio" class="button animate-header"> Ver mis trabajos
                             <font-awesome-icon 
                                 class=" redes-icon ml-1"
                                 :icon="['fas', 'arrow-right']"
@@ -18,42 +19,47 @@
                         </router-link>
                     </div>
 
-                   
-
-                    <div class="list-container">
-                        <div class="services-list">
-                            <h4  class="animate-li">Diseño Web</h4>
-                            <ul>
-                                <li  class="animate-li" >HTML / CSS /JS</li>
-                                <li  class="animate-li" >Full Stack Web</li>
-                                <li  class="animate-li" >Responsive Design</li>
-                                <li  class="animate-li" >Vue JS / AJAX</li>
-                            </ul>
+                
+                <div class="services-grid">
+                        <div class="services-item">
+                            <img src="assets/servicios/uxui.svg" alt="" class="service-icon">
+                            <h2>Diseño UX/ UI</h2>
+                            <p>Creación de experiencias de usuario para una clara y simple navegación en la web</p>
                         </div>
-                        <div class="services-list">
-                            <h4  class="animate-li"> Diseño Grafico</h4>
-                            <ul>
-                                <li  class="animate-li" >UI / UX Design</li>
-                                <li  class="animate-li" >Branding</li>
-                                <li  class="animate-li" >Website Front End</li>
-                                <li  class="animate-li" >Logos</li>
-                            </ul>
+                        <div class="services-item" >
+                            <img src="assets/servicios/web.svg" alt="" class="service-icon">
+                            <h2>Desarrollo Web</h2>
+                            <p>Desarrollo tanto Back como Front End para crear webs dinámicas y adaptables a distintos dispositivos</p>
                         </div>
-                </div>   
-            </div>
-       
+                        <div class="services-item" >
+                            <img src="assets/servicios/branding.svg" alt="" class="service-icon">
+                            <h2>Branding</h2>
+                            <p>Desarrollo de marca e identidad para sobresalir en el mercado a través del diseño</p>
+                        </div>
+                  </div>
+                </div>
+            
+            </section>
+         
+        </main>
 
+        <Footer />
         
-        </section>
+        <Redes />
+        
+        <ProgressBar />
+
     </div>
 </template>
 
 <script>
 
+    import { Footer, Header, Redes, ProgressBar } from '@/components';
+    
     import $ from 'jquery';
 
     import {  TimelineLite } from 'gsap';
-    
+
     import { library } from '@fortawesome/fontawesome-svg-core';
    
     import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -61,6 +67,12 @@
     library.add(faArrowRight);
 
 export default {
+    components:{
+        Footer,
+        ProgressBar,
+        Redes,
+        Header
+    },
     mounted(){
         const t1 = new TimelineLite();
             t1.from( $('.animate-header'),1, {
@@ -71,13 +83,21 @@ export default {
             t1.from( $('.animate-li'),0.6, {
                 opacity: 0,
                 stagger: 0.2,
+                y: 100})
+            
+             t1.from( $('.services-item'),0.8, {
+                opacity: 0,
+                stagger: 0.2,
                 x: 100})
     }
     }
 </script>
 
 <style lang="scss" scoped>
-  
+    .service-icon{
+        height: 70px;
+        margin: 20px 0 30px;
+    }
     #services-section{
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
@@ -85,15 +105,40 @@ export default {
         grid-column: 2 / span 3;
     }
 
+    .services-grid{
+        display: grid;
+        grid-column: span 3;
+        grid-template-columns: repeat(3, 1fr);
+        align-self: center;
+        margin: 40px 0 ;
+        grid-gap: 20px;
+    }
+     .services-item{
+         padding: 20px 15px;
+        background: var(--blue-color);
+        text-align: center;
+
+     }
+     .services-item h2{
+         color: #fff;
+         font-weight: 600;
+         font-size: 24px;
+     }
+    .services-item p{
+        color: var(--grey-color);
+        font-size: 16px;
+        line-height: 35px;
+
+     }
     .section-content{
-        grid-row: 2;
+        margin-top: 100px;
         grid-column: 2 / span 4;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
 
     }
     .section-title h1{
-        color:#fff;
+        color:var(--darkblue-color);
     }
    
     .list-container{
@@ -113,20 +158,19 @@ export default {
     }
     .services-list li{
        padding: 10px 0;
-        color: #fff;
+        color: var(--darkblue-color);
        font-size: 14px;
     }
      .services-item-1{
         grid-column: 1 / span 3; 
-        justify-self: start;
-        align-self: center;
+  
     }
 
     .services-item-1 h1{
         margin-bottom: 20px;
     }
      p{
-        color: #fff;
+        color: var(--darkblue-color);
         line-height: 40px;
         font-size: 16px;
      }
@@ -146,6 +190,10 @@ export default {
 
          .list-container li{
             font-size: 12px;
+        }
+
+        .services-grid{
+            grid-template-columns: 1fr;
         }
     }
 </style>

@@ -1,178 +1,123 @@
 <template>
     <div>
-        <header class="nav-header">
+        <header class="nav-header" id="navHeader" >
             
-                <h2>Logo</h2>
-               
-                
+                <router-link :to=" { path: '/' }" class="logo_container" >
+                    <img src="assets/logo.svg" alt="logo de marca" id="logo">    
+                </router-link>
+              
+                <h2 class="logo-name">Franco Martin</h2>  
                 
                 <ul class="idioma">
         
-                    <li class="active">ES</li>
+                   <!--  <li class="active">ES</li>
         
-                    <li>EN</li>
+                    <li>EN</li> -->
+                    <li><span class="round"></span> Disponible para proyectos</li>
         
                 </ul>
         
-        
-                <div class="menu-bars">
-                    <span class="bar-1 bars" @click="openMenu = true"></span>
+                <div class="menu-bars animateHeader"  @click="openingMenu()" >
+                    <span class="bar-1 bars"></span>
                 
                 </div>
             
         </header>
 
-        <div class="fixedMenu" v-if="openMenu == true">
+        <div>
+            <transition name="slide">
+
+                <mobileHeader v-if="openMenu == true" @close="closeMenu" :router="passingRouter" />
         
-            <header class="nav-header">
-                
-                    <h2>Logo</h2>
-                
-            
-                    <div class="menu-times" @click="openMenu = false">
-                        <span class="times" ></span>
-                    
-                    </div>
-
-                
-            </header>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="nav-wrapper">
-
-                            <ul class="nav-list" >
-                                
-                                <li class="nav-item nav-item-1 ">
-                                    <a href="#about-section"
-                                        
-                                    >
-
-                                        <span data-text="Acerca">Acerca</span>
-
-                                    </a>
-                                </li>
-                    
-                                <li class="nav-item nav-item-2">
-                                    <a  href="#services-section"
-                                        
-                                    >
-
-                                        <span data-text="Servicios"> Servicios</span>
-
-                                    </a>
-                                </li>
-                    
-                                <li class="nav-item nav-item-3">
-                                    <a   href="#portfolio-section"
-                                        
-                                    >
-                                        <span data-text="Portfolio">Portfolio</span>
-                                    
-                                    </a>
-                                </li>
-
-                                <li class="nav-item nav-item-4">
-                                    <a href="#contact-section"
-                                        
-                                    >
-
-                                        <span data-text="Contacto">Contacto</span>
-                                    </a>
-                                </li>
-                    
-                            </ul>
-                        </div>
-                    </div> 
-
-                    <div class="col-md-6 info-contacto">
-                        <div>
-                            <ul class="info-container">
-                            
-                                <li>LOCACI&Oacute;N</li>
-                            
-                                <li>Buenos Aires - Argentina</li>
-                            
-                            </ul>
-                            
-                            <ul class="info-container">
-                            
-                                <li>TEL&Eacute;FONO</li>
-                            
-                                <li>+54 11 3005 7335</li>
-                            
-                            </ul>
-                            
-                            <ul class="info-container">
-                            
-                                <li>EMAIL</li>
-                            
-                                <li>franco@martin.com.ar</li>
-                            
-                            </ul>
-
-                            <ul class="info-container">
-                            
-                                <li>REDES</li>
-                            
-                                <li>
-                                    <font-awesome-icon 
-                                        class=" redes-icon"
-                                        :icon="['fab', 'behance']"
-                                    
-                                    />
-
-                                    <font-awesome-icon 
-                                        class=" redes-icon"
-                                        :icon="['fab', 'linkedin']"
-                                    
-                                    />
-
-                                    <font-awesome-icon
-                                        class=" redes-icon"
-                                        :icon="['fab', 'instagram']" 
-                                    
-                                    />
-
-                                </li>
-                            
-                            </ul>
-
-                        </div>
-                    </div>     
-                </div>
-            </div>
-
+            </transition>
         </div>
               
     </div>
 </template>
 
 <script>
+    import $ from 'jquery';
 
-    import { library } from '@fortawesome/fontawesome-svg-core';
+    import {  TimelineLite } from 'gsap';
+
+    import  mobileHeader  from '@/components/header/components'
    
-    import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
     
-    library.add(faInstagram, faLinkedin, faBehance);
 
 export default {
+    components:{
+        mobileHeader,
+       
+    },
+    props:{
+        passingRouter: Boolean
+    },
     data() {
         return{
+            openMenu: false,
+            lastScrollTop : null
+        }
+    },
+    mounted(){
+        this.lastScrollTop = 0;
+        $(window).scroll( function (){
+        this.scroll = $(this).scrollTop();
 
-            openMenu: false
+        if (this.scroll > 0) {
+            $("#navHeader").css('transform', 'translateY(-100px)');
+                } else {
+                    $("#navHeader").css('transform', 'translateY(0px)');
+                }
+            this.lastScrollTop = $(this).scrollTop();
+
+        })
+
+        var t1 = new TimelineLite();
+
+        t1.from( $('#navHeader'),0.6, {
+                opacity: 0,
+                y: -50
+        });
+
+        t1.from( $('.redes'),0.6, {
+                opacity: 0,
+                x: 50
+        });
+    },
+    methods:{
+        closeMenu (value) {
+            if(value!=0){
+                
+                this.$emit('passingModal', value)
+            }
+            this.openMenu = false;
+        },
+        openingMenu(){
+            this.openMenu = true
+
         }
     }
     
 }
+
+
 </script>
 
-<style lang="scss" scoped>
- .nav-header{
+<style lang="scss" scoped >
+    .logo_container{
+        justify-self: center;
+
+    }
+    #logo{
+        width: 40px;
+        
+    }
+  
+    .nav-header{
         
         display: grid;
         
-        grid-template-columns: 1fr 8fr  1fr;
+        grid-template-columns: 1fr 4fr 4fr  1fr;
         
         align-items: center;
         
@@ -186,12 +131,18 @@ export default {
 
         padding: 20px;
         
-        background: #fff;
+       /*  background: #fff; */
+
+        transition: all 600ms ease-in-out;
     }
     .logo-name{
         font-weight: 600;
 
-        font-size: 1.2em;
+        font-size: 1em;
+
+        margin: 0;
+
+        color: var(--darkblue-color);
     }
     .idioma{
         
@@ -202,6 +153,10 @@ export default {
         align-items: center;
         
         margin: 0;
+
+        color: var(--darkblue-color);
+
+        font-size: 0.9em;
     }
     .idioma li{
         
@@ -215,11 +170,26 @@ export default {
     .idioma .active{
         font-weight: 600;
     }
+
+    .idioma .round{
+        
+        display: inline-block;
+        
+        border-radius: 50%;
+        
+        height: 10px;
+        
+        width: 10px;
+        
+        background: var(--gold-color);
+        
+        margin: 0 5px;
+    }
     .menu-bars{
         
         width: 30px;
         
-        height: 20px;
+        height: 27px;
         
         display: flex;
         
@@ -235,7 +205,7 @@ export default {
 
         cursor: pointer;
 
-        grid-column: 3;
+        grid-column: 4;
 
     }
     .bars{
@@ -266,157 +236,40 @@ export default {
     }
 
     .bars::before{
-        transform: translateX( 20px);
+        transform: translateY( 10px);
+        
+        width: 18px;
     }
 
     .bars::after{
-        transform: translatey( 15px);
+        transform: translatey( 20px);
+        width: 8px;
     }
 
-    .menu-bars:hover .bars::before{
+    .menu-bars:hover .bars::before, .menu-bars:hover .bars::after{
        
-         transform: translateY( 10px);
-    }
-     .menu-bars:hover .bars::after{
-
-        transform: translateY( 20px);
+         width: 30px
     }
 
-    .fixedMenu{
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: url('./assets/logo-bg.png') no-repeat 50% 50% var(--blue-color);
-        background-size: 80%; 
-        z-index: 200;
-        color: white;
-    }
-
-    .fixedMenu header{
-        background: transparent;
-        position: relative;
-
-    }
-    .redes-icon{
-        padding-right: 10px;
-        font-size: 1.3em;
-    }
-
-     .nav-wrapper{
-        position: relative;
-        display: flex;
-        height: 90vh;
-        width: 100%;
-        align-items: center;
-    }
-    .nav-wrapper ul{
-        z-index: 4;
-        padding: 20px;
-       
-    }
-    .nav-wrapper li a{
-        font-size: 10vh;
-        color: var(--grey-color);
-        font-weight: 600;
-      
-    }
-
-    .nav-wrapper .nav-item span{
-        position: relative;
-        display: block;
-    }
-     .nav-wrapper .nav-item span:before{
-         width: 0;
-         color: #fff;
-         overflow:hidden;
-         position: absolute;
-         content: attr(data-text);
-         transition: all 600ms cubic-bezier(0.84, 0, 0.08, 0.99);
-     }
     
-    .nav-wrapper .nav-item:hover span:before{
-        width: 100%;
-        transition:  all 600ms ease-in;
+    .slide-enter-active {
+        animation: slide-in .9s forwards;
+      }
+    .slide-leave-active {
+      animation: slide-in .9s reverse;
     }
-
-    .info-contacto{
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+    @keyframes slide-in {
+        0% {
+            transform: translateX(1000px);
+          }
+    
+        100% {
+            transform: translateX(0px);
+          }
     }
-
-    .info-container{
-        padding: 10px 20px;
-        text-align: right;
-    }
-    .info-container li:nth-child(1){
-        font-weight: 600;
-    }
-
-     .info-container li:nth-child(2){
-        color: var(--grey-color);
-    }
-
-    .menu-times{
-        
-        width: 30px;
-        
-        height: 20px;
-        
-        display: flex;
-        
-        justify-content: center;
-
-        flex-direction: column;
-        
-        justify-self: center;
-        
-        position: relative;
-
-        transition: 600ms all ease-in-out;
-
-        cursor: pointer;
-
-        grid-column: 3;
-
-    }
-
-    .times::before, .times::after{
-        
-        content: '';
-        
-        position: absolute;
-        
-        width: 30px;
-        
-        height: 3px;
-        
-        background: #fff;
-        
-        transition: all 1s ease-in-out;
-
-    }
-
-   .times::before{
-       
-       transform: rotate( -45deg);
-   }
-
-   .times::after{
-       transform: rotate( 45deg);
-       
-   }
-
-   .menu-times:hover .times::after, .menu-times:hover .times::before{
-       transform: rotate( 0deg);
-
-   } 
-
 
     @media(max-width: 768px){
-        .idioma{
+        .idioma, .logo-name{
             display:none;
         }
     }

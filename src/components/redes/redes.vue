@@ -71,7 +71,7 @@
     
     .redes li{
     
-        padding: 30px 0;
+        padding: 20px 0;
         
     }
     .redes li a{

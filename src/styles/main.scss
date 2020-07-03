@@ -10,7 +10,8 @@
     font-family: 'Work', sans-serif;
 }
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+   /*  cursor:none; */
 }
 li{
     list-style: none;
@@ -26,6 +27,7 @@ a:hover{
     --blue-color : #163A59; 
     --grey-color : #7A96AB; 
     --white-color : #FFF;
+    --gold-color : #AB9F71;
 }
 
 ::-webkit-scrollbar{
@@ -33,34 +35,119 @@ a:hover{
 }
 
 section{
+   
     min-height: 100vh;
-    padding: 50px 0;
+   
     position: relative;
-    background-color: var(--white-color);
     
 }
 .section-title{
     margin: 50px 0 20px;
 }
 .section-title h1{
-    font-weight: 700;
-    font-size: 7vh;
+    
+    font-weight: 800;
+    
+    font-size: 45px;
+    
     color:  var(--darkblue-color);
 }
 
 .section-title h2{
-    color: var(--grey-color);
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 600;
+    
+    color: var(--gold-color);
+    
+    font-size: 15px;
+    
+    letter-spacing: 1px;
+    
+   font-weight: 600;
+    
     text-transform: uppercase;
 }
 
 .section-number{
+    
     font-weight: 800;
-    font-size: 6em;
+    
+    font-size: 2.5em;
+    
     color: var(--grey-color);
     
-}
+    align-self: end;
     
+    justify-self: end;
+    
+    animation: trans 1s ease-in-out;
+    
+}
+
+.closing-animation{
+    animation: trans 1s ease-in-out;
+    top: 5px;
+}
+
+p{
+    line-height: 40px;
+   
+    font-size: 16px;
+}
+
+.button{
+    
+    color: var(--gold-color);
+    
+    border: 1px solid #777052;
+    
+    padding: 10px 12px;
+    
+    border-radius: 20px;
+    
+    text-transform: uppercase;
+    
+    font-weight: 600;
+    
+    font-size: 13px;
+    
+    display: inline-block;
+
+    transition: all 600ms ease-in-out;
+
+    
+}
+.button:hover {
+    color: var(--darkblue-color);
+    background: var(--gold-color);
+    letter-spacing: 2px;
+
+}
+
+@media (max-width: 768px){
+ 
+    .section-number{
+         font-size: 2.5em;
+    }
+
+    p{
+        font-size: 14px;
+    }
+    .section-title h1{
+          font-size: 35px;
+    }
+
+     .section-title h2{
+           font-size: 14px;
+    }
+}
+
+
+@keyframes trans{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

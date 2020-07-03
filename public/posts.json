@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "title" : "Deramo",
+        "description" : "Rebuild del sitio web para D`eramo una Inmobiliaria de Mar Azul",
+        "category" : "Website",
+        "img_principal" : "susy1.jpg",
+        "images": [
+            "deramo1.jpg",
+            "deramo2.jpg",
+            "deramo3.jpg",
+            "deramo4.jpg"
+        ],
+        "site" : "https://deramo.com.ar",
+        "implementacion" : "Diseño UX / UI",
+        "fecha" : "Noviembre de 2016"
+
+    },
+    {
+        "id": 2,
+        "title": "Susy Shock",
+        "category" : "Diseño",
+        "description": "Desplegable tipografico realizado para la cátedra Rico en la UBA",
+        "img_principal": "Susy1.jpg",
+        "images": [
+            { "name" : "Susy1.jpg" },
+            { "name" : "Susy2.jpg" },
+            { "name" : "Susy3.jpg" },
+            { "name" : "Susy4.jpg" }
+        ],
+        "site": "https://Susy.com.ar",
+        "implementacion": "Diseño Editorial",
+        "fecha": "Agosto de 2019"
+    }
+]
