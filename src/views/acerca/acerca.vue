@@ -10,8 +10,7 @@
                                 <h2 class="section-sub-title animate">Franco Martin Cagliolo</h2>
                                 <h1 class="animate">Acerca de mi</h1>
 
-                                <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires. <br>
-                                Estudié en la escuela Da Vinci la carrera de web y con el correr de los años fui trabajando como freelance y luego para otras empresas en donde fui adquiriendo diversos  </p>
+                                <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires.  </p>
                             </div>
                         </div>
                         <div class="description-item-1">

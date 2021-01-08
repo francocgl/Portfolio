@@ -120,7 +120,6 @@ export default new VueRouter({
             props: castRouteParams,
             beforeEnter(to, from, next) {
                            
-             
                 Promise.all([
                     window.scrollTo(0, 0)
                    

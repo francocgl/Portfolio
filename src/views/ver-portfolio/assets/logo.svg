@@ -1,0 +1,27 @@
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+<style type="text/css">
+	.Sombra_x0020_paralela{fill:none;}
+	.Esquinas_x0020_redondeadas_x0020_2_x0020_pt_x002E_{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.Reflejo_x0020_vivo_x0020_X{fill:none;}
+	.Bisel_x0020_suave{fill:url(#SVGID_1_);}
+	.Atardecer{fill:#FFFFFF;}
+	.Follaje_GS{fill:#FFDD00;}
+	.Pompadour_GS{fill-rule:evenodd;clip-rule:evenodd;fill:#44ADE2;}
+	.st0{fill:#102A40;}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0.7071" y2="0.7071">
+	<stop  offset="0" style="stop-color:#DEDFE3"/>
+	<stop  offset="0.1738" style="stop-color:#D8D9DD"/>
+	<stop  offset="0.352" style="stop-color:#C9CACD"/>
+	<stop  offset="0.5323" style="stop-color:#B4B5B8"/>
+	<stop  offset="0.7139" style="stop-color:#989A9C"/>
+	<stop  offset="0.8949" style="stop-color:#797C7E"/>
+	<stop  offset="1" style="stop-color:#656B6C"/>
+</linearGradient>
+<g>
+	<polygon id="XMLID_68_" class="st0" points="39.4,28.6 35.5,35.6 21.9,11.3 25.8,4.4 	"/>
+	<polygon id="XMLID_51_" class="st0" points="20,28.7 23.8,21.7 18.1,11.4 18.1,11.3 14.2,4.4 14.2,4.4 14.2,4.4 13.8,5.1 0.6,28.7 
+		4.5,35.6 9.4,26.9 11.3,30.3 14.2,25.1 12.2,21.7 14.2,18.3 	"/>
+</g>
+</svg>

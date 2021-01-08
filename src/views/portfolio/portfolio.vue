@@ -89,7 +89,7 @@ export default {
         }
     },
     mounted(){
-        this.$store.dispatch('loadPosts');
+       /*  this.$store.dispatch('loadPosts'); */
 
         const t1 = new TimelineLite();
 
@@ -116,10 +116,12 @@ export default {
     }
     .section-title{
         grid-column: 1 /span 6;
+        grid-row: 1;
     }
     .section-title h1{
 
         color: var(-darkblue-color);
+        font-size: 64px;
     }
    
     .section-title p{

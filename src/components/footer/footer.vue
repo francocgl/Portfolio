@@ -3,10 +3,15 @@
         <footer>
             
             <div class="footer-item copy">
-                <span>@copyright 2020 | Franco Martin </span>
+                <div >
+                    <img src="@/assets/logo-gray.svg" alt="logo de marca"> 
+                </div>
+                
+                <span> | @copyright 2020 </span>
+            
             </div>
            
-            <div class="footer-item redes">
+            <div class="footer-item redes"> 
                 
                 <ul >
                     <li><a href="">Instragram </a></li>
@@ -52,7 +57,7 @@
 <style lang="scss" scoped>
     footer{
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr ;
+       grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
         background: var(--darkblue-color);
         align-items: center;
 
@@ -79,10 +84,10 @@
    }
 
    .toTop{
-       grid-column: 5 / span 1;
+       grid-column: 5 / span 2;
        /* background: white; */
+        justify-self: center;
        display: flex;
-       justify-content: flex-end;
    }
 
     .toTop h4{
@@ -91,11 +96,19 @@
         cursor: pointer;
         font-weight: 600;
    }
+
    footer .copy{
-        grid-column: 2/ span 1;
+        grid-column: 1/ span 2;
         color: var(--grey-color);
         font-size: 0.9em;
+        display: flex;
+        justify-self: center;
+        align-items: center;
    }
+    footer .copy div{
+        width: 20px;
+        margin-right: 7px;
+    }
 
     @media (max-width: 768px){
         

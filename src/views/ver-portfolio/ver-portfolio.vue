@@ -11,25 +11,24 @@
                         <h1>{{ getItem.title }}</h1>
                     </div>
                         
-                        <div class="project-info">
-                            <ul>
-                                <li class="animate-list">IMPLEMENTACI&Oacute;N</li>
-                                <li class="animate-list">{{ getItem.implementacion }}</li>
-                            </ul>
-                            
-                            <ul>
-                                <li class="animate-list" >FECHA</li>
-                                <li class="animate-list" >{{ getItem.fecha }}</li>
-                            </ul>
-                            
-                            <ul>
-                                <li class="animate-list" >WEBSITE</li>
-                                <li class="animate-list" >
-                                    <a v-bind:href=" getItem.site " target="_blank">{{ getItem.site }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    <p class="animate-list">{{ getItem.description }}</p>
+                    <div class="project-info">
+                        <ul class="project-ul">
+                    <!--         <li class="animate-list">IMPLEMENTACI&Oacute;N</li> -->
+                            <li class="animate-list">{{ getItem.implementacion }}</li>
+                            <li class="animate-list" >
+                                <a v-bind:href=" getItem.site " target="_blank">{{ getItem.site }}</a>
+                            </li>
+                        </ul>
+                        
+                    
+                        
+                        <p class="animate-list">{{ getItem.description }}</p>
+
+                        <ul>
+                            <li class="animate-list fecha" >{{ getItem.fecha }}</li>
+                          
+                        </ul>
+                    </div>
 
                 </article>
               
@@ -42,8 +41,23 @@
                                         
                 </div>
                 
-                <div class="next-work">
-                    <h3>Siguiente Proyecto</h3>
+                <div class="next-work d-flex justify-content-between" >
+                    <div>
+
+                    <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:getItem.id-1} }" v-if="anteriorExists" >
+                       
+
+                            <h3>Anterior Proyecto</h3>
+                    </router-link>
+                    </div>
+                    <div>
+
+                    <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:getItem.id+1} }" v-if="siguienteExists">
+
+                            <h3>Siguiente Proyecto</h3>
+                            
+                    </router-link>
+                    </div>
                 </div>
 
             </section>
@@ -84,10 +98,23 @@ export default {
     computed:{
         getItem(){
             return this.$store.getters.getTodoById(this.id) 
+          /*  return this.$store.dispatch('getPost', this.fund); */
+        },
+          siguienteExists(){
+            if(this.$store.getters.getTodoById(this.id+1) != undefined){
+                return true
+            }
+            return false
+        },
+        anteriorExists(){
+            if(this.$store.getters.getTodoById(this.id-1) != undefined){
+                return true
+            }
+            return false
         }
     },
     mounted(){
-             this.$store.dispatch('getPost', this.fund);
+            /* this.$store.dispatch('getPost', this.fund); */ 
 
             var t2 = new TimelineLite();
              t2.from( $('.animate-list'), 1, {
@@ -100,10 +127,8 @@ export default {
                 y:-50,
                 stagger: 0.2
             });
-    },
-    methods:{
-      
     }
+  
 }
 </script>
 
@@ -140,13 +165,14 @@ export default {
         
     }
     main{
-        padding-top: 40px;
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr ;
+        grid-template-rows: 70px  1fr ;
     }
     main section{
 
         grid-column: 2 / span 4;
+        grid-row: 2;
     }
 
 
@@ -159,27 +185,43 @@ export default {
     }
 
     .section-title{
-        grid-column: span 2
+        grid-column: span 2;
+        grid-row: 1;
     }
 
     .headline p {
-        font-size: 1.2em;
+        font-size:16px;
         padding: 10px 0;
         color: var(--darkblue-color);
         line-height: 40px;
     }
-
+     .project-info{
+         display: flex;
+         justify-content: space-between;
+         grid-column: 1 / span 2;
+     }
     .project-info ul{
-        margin: 30px 0;
+        padding: 20px 0;
     }
 
-    .project-info ul li:nth-child(1){
+    .project-ul li:nth-child(1){
+        
         font-weight: 600;
+        
         padding-bottom: 10px;
-          color: var(--grey-color);
-        letter-spacing: 2px;
+        
         font-size: 0.9em;
+        
+        color: var(--darkblue-color);
+        
+        font-size: 1em;
 
+        text-transform: uppercase;
+
+     }
+
+     .fecha{
+    
      }
       .project-info ul li:nth-child(2),  .project-info ul li:nth-child(2) a{
         color: var(--darkblue-color);

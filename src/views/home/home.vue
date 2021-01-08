@@ -1,17 +1,14 @@
 <template>
   <div>
      
-            <NavWrapper />
-        <Pointer />
+        <NavWrapper />
 
-        <Footer />
+
   </div>
 </template>
 
 <script>
     
-    import {Footer,  Pointer} from '@/components'
-
     import NavWrapper from './nav-wrapper'
 
     import $ from 'jquery';
@@ -20,8 +17,6 @@
 
 export default {
     components:{
-        Footer,
-        Pointer,
         NavWrapper,
     
     },

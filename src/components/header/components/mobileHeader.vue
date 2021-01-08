@@ -4,7 +4,7 @@
         <header class="nav-header animateNav">
                 
                 <router-link to="/" @click="onClose(0)" class="logo-container" >
-                    <img src="assets/logo.svg" alt="logo de marca" id="logo"> 
+                    <img src="@/assets/logo-white.svg" alt="logo de marca" id="logo"> 
                 </router-link>
         
                 <div class="menu-times" @click="onClose(0)">
@@ -22,25 +22,25 @@
 
                 <ul class="nav-list"  v-if="!router">
                     
-                    <li class="nav-item nav-item-1 ">
+                    <li class="nav-item nav-item-1 nav-item-animate">
                         <a   @click="onClose(1)">
                             <span data-text="Acerca">Acerca</span>
                         </a>
                     </li>
         
-                    <li class="nav-item nav-item-2"  >
+                    <li class="nav-item nav-item-2 nav-item-animate"  >
                         <a   @click="onClose(2)">
                             <span data-text="Servicios" > Servicios</span>
                         </a>
                     </li>
         
-                    <li class="nav-item nav-item-3">
+                    <li class="nav-item nav-item-3 nav-item-animate">
                         <a    @click="onClose(3)">
                             <span data-text="Portfolio">Portfolio</span>
                         </a>
                     </li>
 
-                    <li class="nav-item nav-item-4">
+                    <li class="nav-item nav-item-4 nav-item-animate">
                         <a   @click="onClose(4)">
 
                             <span data-text="Contacto">Contacto</span>
@@ -232,7 +232,8 @@ export default {
         transition: all 600ms ease-in-out;
     }
     .fixedMenu{
-        position: fixed;overflow: hidden;
+        position: fixed;
+        overflow: hidden;
         top: 0;
         bottom: 0;
         left: 0;
@@ -273,12 +274,11 @@ export default {
     }
     .nav-wrapper ul{
         z-index: 4;
-        padding: 20px;
        
     }
     .nav-wrapper li a{
         font-size: 60px;
-        color: var(--grey-color);
+        color: #fff;
         font-weight: 600;
         cursor: pointer;
       
@@ -290,7 +290,7 @@ export default {
     }
      .nav-wrapper .nav-item span:before{
          width: 0;
-         color: #fff;
+         color: var(--gold-color);
          overflow:hidden;
          position: absolute;
          content: attr(data-text);
@@ -314,6 +314,7 @@ export default {
     .info-container li:nth-child(1){
         font-weight: 600;
         font-size: 17px;
+        color: #fff;
     }
 
      .info-container li:nth-child(2){
@@ -381,7 +382,7 @@ export default {
    }
 
    #logo{
-        width: 50px;
+        width: 35px;
         
     }
 

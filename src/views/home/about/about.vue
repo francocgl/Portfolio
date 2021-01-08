@@ -8,21 +8,23 @@
                             <h2 class="section-sub-title animate">Franco Martin Cagliolo</h2>
                             <h1 class="animate">Acerca de mi</h1>
 
-                            <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires. <br>
-                            Estudié en la escuela Da Vinci la carrera de web y con el correr de los años fui trabajando como freelance y luego para otras empresas en donde fui adquiriendo diversos  </p>
-                            
-                            <router-link to="/acerca" class="button animate"> Ver más
-                                <font-awesome-icon 
-                                    class=" redes-icon ml-1"
-                                    :icon="['fas', 'arrow-right']"
-                            
-                                />
-                            </router-link>
+                            <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires.  </p>
+                            <div class="animate">
+
+                                <router-link to="/acerca" class="button "> Ver más
+                                    <font-awesome-icon 
+                                        class=" redes-icon ml-1"
+                                        :icon="['fas', 'arrow-right']"
+                                
+                                    />
+                                </router-link>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="description-item-1">
+                  <!--   <div class="description-item-1">
                         <img src="assets/about.jpg" alt="">
-                    </div>
+                    </div> -->
             </div>
 
         </section>
@@ -86,7 +88,7 @@ export default {
     .description-container{
        grid-row-start: 2;
        align-items: center;
-       grid-column: 2 / span 5;
+       grid-column: 2 / span 4;
        display: grid;
        grid-template-columns: 1fr 1fr 2fr;
     }
@@ -100,10 +102,9 @@ export default {
        
     }
     .description-item-2{
-        grid-column: 1 / span 2;
+        grid-column: 1 / span 3;
     }
     .description-item-1{
-      /*   background: var(--grey-color); */
         height: 500px;
         overflow: hidden;
         padding-left: 20px;

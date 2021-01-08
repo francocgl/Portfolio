@@ -1,14 +1,20 @@
 <template>
     <div>
         <header class="nav-header" id="navHeader" >
-            
-                <router-link :to=" { path: '/' }" class="logo_container" >
-                    <img src="assets/logo.svg" alt="logo de marca" id="logo">    
-                </router-link>
+            <div  class="logo-container">
+
+                <router-link :to=" { path: '/' }" class="logo">
+                    <img src="@/assets/logo.svg" alt="logo de marca" id="logo">    
+                    <h2 class="logo-name">Franco Martin</h2>  
               
-                <h2 class="logo-name">Franco Martin</h2>  
+                </router-link>
+            </div>
                 
-                <ul class="idioma">
+                <ul 
+                  :class="{
+                            'idioma' : true,
+                            'white-text' : (passingRouter == false) ? true : false
+                        }" >
         
                    <!--  <li class="active">ES</li>
         
@@ -17,7 +23,13 @@
         
                 </ul>
         
-                <div class="menu-bars animateHeader"  @click="openingMenu()" >
+                <div 
+                    :class="{
+                            'menu-bars' : true,
+                            'animateHeader' : true,
+                            'white' : (passingRouter == false) ? true : false
+                        }" 
+                     @click="openingMenu()" >
                     <span class="bar-1 bars"></span>
                 
                 </div>
@@ -104,20 +116,31 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-    .logo_container{
-        justify-self: center;
+
+    .logo-container{
+        padding: 0px 30px;
+        grid-column: 1 / span 2 ;
+    }
+
+    .logo{
+        display: flex;
+        align-items: center;
 
     }
     #logo{
-        width: 40px;
+        width: 35px;
+        margin-right: 10px;
         
+    }
+    .white-text li{
+        color:#fff !important;
     }
   
     .nav-header{
         
         display: grid;
         
-        grid-template-columns: 1fr 4fr 4fr  1fr;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
         
         align-items: center;
         
@@ -131,14 +154,14 @@ export default {
 
         padding: 20px;
         
-       /*  background: #fff; */
+        z-index: 200;
 
         transition: all 600ms ease-in-out;
     }
     .logo-name{
         font-weight: 600;
 
-        font-size: 1em;
+        font-size: 0.9em;
 
         margin: 0;
 
@@ -154,9 +177,11 @@ export default {
         
         margin: 0;
 
-        color: var(--darkblue-color);
+       
 
         font-size: 0.9em;
+
+        grid-column: 4 / span 2;
     }
     .idioma li{
         
@@ -165,6 +190,8 @@ export default {
         font-weight: 500;
         
         font-size: 1em;
+
+        color: var(--darkblue-color);
     }
 
     .idioma .active{
@@ -205,10 +232,15 @@ export default {
 
         cursor: pointer;
 
-        grid-column: 4;
+        grid-column: 6;
+
+        z-index: 200;
 
     }
-    .bars{
+    .white .bars, .white .bars::after, .white .bars::before{
+        background: #fff;
+    }
+   .bars{
         
         width: 30px;
         
@@ -272,5 +304,9 @@ export default {
         .idioma, .logo-name{
             display:none;
         }
+        .logo-container{
+            padding: 0;
+        }
+    
     }
 </style>

@@ -1,48 +1,22 @@
 <template>
     <div>
-        <section  id="services-section">
+        <section  id="services-section-home">
             
-
-           
-                <div class="section-content">
                     <div class="services-item-1 section-title">
                         <h2 class="animate-header">Diseñador Gráfico / Web</h2>
-                        <h1 class="animate-header">Servicios</h1>
-                        <p class="animate-header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sint magnam dolore eum, porro iste non sunt similique nobis nostrum? Neque animi excepturi incidunt voluptatibus dolore, illo cumque dicta minus. </p>
-                        <router-link to="/servicios" class="button animate-header"> Ver Servicios
-                            <font-awesome-icon 
-                                class=" redes-icon ml-1"
-                                :icon="['fas', 'arrow-right']"
-                        
-                            />
-                        </router-link>
+                        <h1 class="animate-header">Cómo te puedo ayudar?</h1>
+                        <p class="animate-header">Me desempeño como desarrollador web y sumándole el diseño gráfico te puedo ayudar a hacer crecer tu marca y fomentar la comunicación a nivel digital. </p>
+                        <div class="animate-header">
+
+                            <router-link to="/servicios" class="button "> Ver Servicios
+                                <font-awesome-icon 
+                                    class=" redes-icon ml-1"
+                                    :icon="['fas', 'arrow-right']"
+                            
+                                />
+                            </router-link>
+                        </div>
                     </div>
-
-                   
-
-                    <div class="list-container">
-                        <div class="services-list">
-                            <h4  class="animate-li">Diseño Web</h4>
-                            <ul>
-                                <li  class="animate-li" >HTML / CSS /JS</li>
-                                <li  class="animate-li" >Full Stack Web</li>
-                                <li  class="animate-li" >Responsive Design</li>
-                                <li  class="animate-li" >Vue JS / AJAX</li>
-                            </ul>
-                        </div>
-                        <div class="services-list">
-                            <h4  class="animate-li"> Diseño Grafico</h4>
-                            <ul>
-                                <li  class="animate-li" >UI / UX Design</li>
-                                <li  class="animate-li" >Branding</li>
-                                <li  class="animate-li" >Website Front End</li>
-                                <li  class="animate-li" >Logos</li>
-                            </ul>
-                        </div>
-                </div>   
-            </div>
-       
-
         
         </section>
     </div>
@@ -78,11 +52,10 @@ export default {
 
 <style lang="scss" scoped>
   
-    #services-section{
+    #services-section-home{
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
-        grid-template-rows: auto 2fr;
-        grid-column: 2 / span 3;
+       grid-column: 2 / span 3;
     }
 
     .section-content{
@@ -99,7 +72,8 @@ export default {
     .list-container{
         display: flex;
         justify-content: space-between;
-        grid-column: 1 / span 2;
+        grid-column: 2 / span 2;
+        grid-row: 3;
     }
    
     .services-list h4{
@@ -117,7 +91,7 @@ export default {
        font-size: 14px;
     }
      .services-item-1{
-        grid-column: 1 / span 3; 
+        grid-column: 2 / span 4; 
         justify-self: start;
         align-self: center;
     }

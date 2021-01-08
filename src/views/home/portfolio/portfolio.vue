@@ -4,53 +4,25 @@
            
             <div class="portfolio-grid ">
                 <div class="portfolio">
-                    <div class="section-title  medium tall ">
+                    <div class="section-title  medium  ">
             
-                        <h2 class="animate-header">Trabajos y Proyectos</h2>
-                        <h1 class="animate-header">Portfolio </h1>
-                        <!-- <p class="animate-header">Desliza para ver todos los trabajos.</p> -->
+                        <h2 class="animate-header">Diseño</h2>
+                        <h1 class="animate-header">Trabajos y Proyectos </h1>
+                        <p class="animate-header">Entrá a ver todos mis trabajos freelance, proyectos y diseños personales.</p>
                          
                     </div>
 
-                    <div 
-                        v-for="(post, index) in posts" :key="index"
-                        :class="{
-                            'item': true,
-                            'tall': true,
-                           
-                        }"
-                    >
-                        
-                            <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:post.id} }" >
-                            <!-- <router-link :to=" { path: '/portfolio/' + post.id }" > -->
-                                    <!-- <img v-bind:src="'/assets/portfolio/' + post.img_principal" class="portfolio-img" /> -->
-
-                                    <div class="img" v-bind:style="{backgroundImage:'url(assets/portfolio/'+ post.img_principal +')'}">
-                                    <div class="overlay-img">
-                                        <div class="img-title">
-                                            <h2>{{post.title}}</h2>
-                                            <h3>{{post.category}}</h3>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </router-link>
-                           
-
-                                               
-                    </div>
-                
-                    <div class="item  tall"></div>
-                    <div class="item  tall"></div>
-                    <div class="item  tall"></div>
-                    <router-link to="/portfolio" class="button animate-header button-portfolio"> Ver todos
+                    <div class="animate-header">
+                          <router-link to="/portfolio" class="button  button-portfolio"> Ver todos
                                 <font-awesome-icon 
                                     class=" redes-icon ml-1"
                                     :icon="['fas', 'arrow-right']"
                             
                                 />
-                            </router-link>
+                        </router-link>
+                    </div>
+
+                  
 
                 </div>
             </div>  
@@ -66,9 +38,21 @@
     import {  TimelineLite } from 'gsap';
 
 export default {
+    data(){
+        return{
+            showLessproyects: true
+        }
+    },
     computed: {
         posts(){
             return this.$store.state.posts
+        },
+         proyectsToDisplay: function() {
+            if (this.showLessproyects) {
+                return this.posts.slice(0, 3);
+            } else {
+                return this.posts;
+            }
         }
     },
     mounted(){
@@ -94,7 +78,7 @@ export default {
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
         align-items: center;
-        grid-template-rows: auto 1fr;
+      /*   grid-template-rows: auto 1fr; */
                 
     }
     .section-title{
@@ -109,30 +93,29 @@ export default {
         color: white;
         margin-top: 20px;
     }
-     .section-title{
-        grid-column: 2 / span 3;
-         
-     }
+    
      .portfolio-grid{
         grid-column: 2 / span 4;
-        grid-row: 2;
         align-self: center;
-        justify-self: center;
 }
 
-    .portfolio{
+ /*    .portfolio{
         display: grid;
         grid-template-columns: repeat(6, minmax(50px, 1fr));
         grid-template-rows: repeat(6, minmax(50px, 1fr));
         grid-gap: 20px;
         width: 100%;
-    }
+    } */
     .medium{
-        grid-column: span 2;
+        grid-column: span 4;
         grid-row: span 2;
     }
     .tall{
         grid-row: span 3;
+        grid-column: span 2;
+    }
+    .xtall{
+        grid-row: span 5;
         grid-column: span 2;
     }
     
@@ -194,7 +177,8 @@ export default {
 
      .button-portfolio{
          grid-column: 1  / span 2;
-         justify-self: start;
+         align-self: center;
+         text-align: center;
      }
 
 

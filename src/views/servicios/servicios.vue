@@ -10,13 +10,16 @@
                         <h2 class="animate-header">que cosas hago</h2>
                         <h1 class="animate-header">Servicios</h1>
                         <p class="animate-header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sint magnam dolore eum, porro iste non sunt similique nobis nostrum? Neque animi excepturi incidunt voluptatibus dolore, illo cumque dicta minus. </p>
-                        <router-link to="/portfolio" class="button animate-header"> Ver mis trabajos
+                       
+                       <div class="animate-header">
+                         <router-link to="/portfolio" class="button "> Ver mis trabajos
                             <font-awesome-icon 
                                 class=" redes-icon ml-1"
                                 :icon="['fas', 'arrow-right']"
                         
                             />
                         </router-link>
+                        </div>
                     </div>
 
                 
@@ -38,6 +41,27 @@
                         </div>
                   </div>
                 </div>
+
+                         <div class="list-container">
+                        <div class="services-list">
+                            <h4  class="animate-li">Diseño Web</h4>
+                            <ul>
+                                <li  class="animate-li" >HTML / CSS /JS</li>
+                                <li  class="animate-li" >Full Stack Web</li>
+                                <li  class="animate-li" >Responsive Design</li>
+                                <li  class="animate-li" >Vue JS / AJAX</li>
+                            </ul>
+                        </div>
+                        <div class="services-list">
+                            <h4  class="animate-li"> Diseño Grafico</h4>
+                            <ul>
+                                <li  class="animate-li" >UI / UX Design</li>
+                                <li  class="animate-li" >Branding</li>
+                                <li  class="animate-li" >Website Front End</li>
+                                <li  class="animate-li" >Logos</li>
+                            </ul>
+                        </div>
+                </div>   
             
             </section>
          
@@ -99,6 +123,7 @@ export default {
         margin: 20px 0 30px;
     }
     #services-section{
+        /* margin-top: 100px; */
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
         grid-template-rows: auto 2fr;
@@ -162,6 +187,7 @@ export default {
        font-size: 14px;
     }
      .services-item-1{
+         grid-row: 1;
         grid-column: 1 / span 3; 
   
     }
@@ -173,6 +199,10 @@ export default {
         color: var(--darkblue-color);
         line-height: 40px;
         font-size: 16px;
+     }
+
+     .list-container{
+         grid-column: 2 / span 2;
      }
 
     @media (max-width: 768px){

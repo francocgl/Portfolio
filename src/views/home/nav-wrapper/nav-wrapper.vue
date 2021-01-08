@@ -1,9 +1,8 @@
 <template>
     <div>
-        <Header :passingRouter="true" />
+        <Header :passingRouter="false" />
         
         <section class="home-section">
-            <Redes />
            
              <div class="project-preview-wrapper" >
                 
@@ -13,14 +12,14 @@
                         
                         <li 
                             :class="{
+                               
                                 'nav-item nav-item-1': true,
                                 'active-modal': (modal == 1) ? true : false
                             }"
                         >
                             <a  
-                               
-                                @click="openWrapper(1)"
-                                v-on:mouseenter="mouseenter(1)"
+                                href="/acerca"
+                                v-on:mouseenter="openWrapper(1)"
                             >
 
                                 <span data-text="Acerca">Acerca</span>
@@ -34,8 +33,10 @@
                                 'active-modal': (modal == 2) ? true : false
                             }"
                         >
-                            <a   @click="openWrapper(2)"
-                                v-on:mouseenter="mouseenter(2)"
+                            <a   
+
+                                href="servicios"
+                                v-on:mouseenter="openWrapper(2)"
                             >
 
                                 <span data-text="Servicios"> Servicios</span>
@@ -49,8 +50,10 @@
                                 'active-modal': (modal == 3) ? true : false
                             }"
                         >
-                            <a  @click="openWrapper(3)"
-                                v-on:mouseenter="mouseenter(3)"
+                            <a 
+                                href="/portfolio"
+                                v-on:mouseenter="openWrapper(3)"
+                                :passingRouter="true"
                             >
                                 <span data-text="Portfolio">Portfolio</span>
                             
@@ -63,8 +66,10 @@
                                 'active-modal': (modal == 4) ? true : false
                             }"
                         >
-                            <a  @click="openWrapper(4)"
-                                v-on:mouseenter="mouseenter(4)"
+                            <a 
+                                  href="/contacto"
+                                v-on:mouseenter="openWrapper(4)"
+                                
                             >
 
                                 <span data-text="Contacto">Contacto</span>
@@ -72,14 +77,15 @@
                         </li>
             
                     </ul>
-                </nav>
+
+                 </nav>
 
                 <main class="wrapper-container">
                     
                     <transition name="slide">
                     
                         <div class="wrapper" v-if="wrapper == true">
-                            <div class="closing-animation ">
+                          <!--   <div class="closing-animation ">
                                 
                                 <div class="section-number ">
                                 
@@ -92,7 +98,7 @@
                                     <span class="times" ></span>
                                 
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="wrapper-content">
 
                                 <About v-if="modal == 1"/>
@@ -110,13 +116,39 @@
 
                 </main>
 
-                <div class="project-preview " v-bind:style="{backgroundImage:'url(assets/nav-item-1.jpg)'}">
+               <!--  <div class="project-preview " v-bind:style="{backgroundImage:'url(assets/nav-item-1.jpg)'}">
                    
-                   <!--  <span class="number-page">01</span> -->
+                    <span class="number-page">01</span>
                
                 </div>
-
+                -->
             </div>
+
+
+            <div class="redes">
+                <ul>
+                    <li>
+                        <a ref="box" href="" target="_blank">
+                            <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'instagram']"  /> -->
+                            Instagram
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ref="box" href="" target="_blank">
+                           <!--  <font-awesome-icon class=" redes-icon" :icon="['fab', 'linkedin']" /> -->
+                            Linkedin
+                        </a>
+                    </li>
+
+                    <li>
+                        <a ref="box" href="" target="_blank">
+                            <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'behance']" /> -->
+                            Behance
+                        </a>
+                    </li>
+                </ul>
+        </div>
 
         </section>
     </div>
@@ -128,16 +160,21 @@ import $ from 'jquery';
 import {  TimelineLite, Expo } from 'gsap';
 
 
-import { Redes, Header } from '@/components';
+import {  Header } from '@/components';
 import  About  from '@/views/home/about';
 import  Portfolio  from '@/views/home/portfolio';
 import  Services  from '@/views/home/services';
 import  Contact  from '@/views/home/contact';
 
+  import { library } from '@fortawesome/fontawesome-svg-core';
+   
+    import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
+    
+    library.add(faInstagram, faLinkedin, faBehance);
+
 export default {
   
     components:{
-        Redes,
         Header,
         About,
         Contact,
@@ -151,10 +188,19 @@ export default {
         }
     },
     mounted(){
+        this.openWrapper(1);
+
          var t2 = new TimelineLite();
-            t2.to( $('.project-preview'), 0.1, {
-                width: '500px',
-                overflow: 'visible'
+             t2.from( $('.project-preview'), 0.5, {
+                width: '0',
+                 ease: Expo.easeInOut
+    
+            }).to( $('.project-preview'), 0.5, {
+                width: '700px',
+                backgroundImage:'url(assets/nav-item-1.png)',
+                overflow: 'visible',
+                 ease: Expo.easeInOut
+                
             });
             t2.from( $('.nav-item'), 1, {
                 opacity: 0,
@@ -165,32 +211,60 @@ export default {
             
     },
     methods: {
-        mouseenter:  function(id){
+            asd(){
+                 $('.nav-item').addClass('fill');
+            },
+       /*  mouseenter:  function(id){
             $('.nav-item').removeClass('active');
             $('.nav-item-'+id).addClass('active');
             
             $('.project-preview').addClass('.project-preview-'+id);
-            $('.number-page').html('0'+id)
+     
            
            var t1 = new TimelineLite();
            
            t1.set($(".project-preview"), {backgroundImage:'url(assets/nav-item-'+ id +'.png)'});
 
-            t1.from( $('.project-preview '), 0.7, {
-                width: 0,
+            t1.from( $('.project-preview '), 1, {
+                opacity: 0,
                 ease: Expo.easeInOut
             }).to( $('.project-preview'), 1, {
-                width: '700px',
+                opacity: 1,
                 overflow: 'visible',
                 ease: Expo.easeInOut
             });
 
-        },
+        }, */
         openWrapper: function(value){
+
+            $('.nav-item').removeClass('active');
+            $('.nav-item-'+value).addClass('active');
+
+
+            var t1 = new TimelineLite();
+           
+           t1.set($(".wrapper-container"), {background:'url(assets/nav-item-'+ value +'.jpeg) repeat center 50% '});
+
+            t1.from( $('.project-preview '), 1, {
+                opacity: 0,
+                ease: Expo.easeInOut
+            }).to( $('.project-preview'), 1, {
+                opacity: 1,
+                ease: Expo.easeInOut
+            });
+
+           /*  var t2 = new TimelineLite();
+             t2.from( $('.nav-item '), 1, {
+                width: 0,
+            }).to( $('.nav-item'), 1, {
+                width: 100
+            }); */
+
+            
             if(this.wrapper == false){
                 
                 this.wrapper= true;
-            }else
+            }/* else
             {   
                 this.wrapper= false;
                 if(this.modal != value){
@@ -199,7 +273,7 @@ export default {
                         this.wrapper= true;
                     }, 1000);
                 }
-            }
+            } */
                     
             return  this.modal = value;
 
@@ -234,20 +308,15 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
-    .active-modal span{
-        color:var(--darkblue-color) !important;
 
-    }
-    .active a{
-        color: #112a40b0 ;
-          
-    }
+  
     .home-section{ 
         
-      /*   background: url('./assets/logo-bg.png') no-repeat 50% 50%;
+        background: url('./assets/rombos-bg.png') no-repeat -10% -10%;
         
-        background-size: 80%; 
-         */
+        background-size: 40%; 
+        background-attachment: cover; 
+        
         padding: 0;
     }
      
@@ -263,6 +332,9 @@ export default {
     }
 
     .wrapper-container .wrapper{
+
+        background: #212529c4;
+        
         position: absolute;
 
         width: 100%;
@@ -277,7 +349,9 @@ export default {
 
         right: 0;
 
-        background: var(--darkblue-color);
+       /*  background: var(--darkblue-color); */
+
+       background-attachment: cover;
     }
    
     .nav-wrapper{
@@ -291,8 +365,10 @@ export default {
         align-self: center;
         
         display: flex;
+
+        padding: 0 50px;
         
-        justify-content: center;
+       /*  justify-content: center; */
         
     }
     .nav-list{
@@ -306,13 +382,12 @@ export default {
         
         font-size: 5vh;
         
-        color: var(--grey-color);
+        color: #fff;
+
+         -webkit-text-stroke: 0.5px var(--darkblue-color);
         
         font-weight: 600;
         
-       /*  -webkit-text-stroke-width: 0.5px;
-        
-        -webkit-text-stroke-color: #112a40b0; */
     }
 
     .nav-wrapper .nav-item span{
@@ -322,6 +397,11 @@ export default {
         display: block;
 
         cursor: pointer;
+    }
+
+    .active a{
+        color: #112a40b0 ;
+          
     }
 
      .nav-wrapper .nav-item span:before{
@@ -339,11 +419,17 @@ export default {
         transition: all 600ms cubic-bezier(0.84, 0, 0.08, 0.99);
 
      }
+  
+
+  /* 
+    .active-modal{
+         color: var(--darkblue-color);
+    } */
     
-    .nav-wrapper .active span:before{
-        width: 100%;
+    .active-modal a span:before{
+        width: 100% !important;
         
-        transition:  all 600ms ease-in;
+        transition:  all 600ms ease-in !important;
     }
 
     .project-preview-wrapper{
@@ -372,7 +458,7 @@ export default {
         height:700px;
         
         transform: translate(-50%, -50%);
-        
+
         background-size: cover;
         
         background-position: 50% 50%;
@@ -428,11 +514,7 @@ export default {
         
         justify-self: center;
         
-       /*  position: absolute; */
-
-        right: 25px;
-        
-        top: 25px;
+        grid-column: 6;
 
         z-index: 2000;
 
@@ -478,16 +560,72 @@ export default {
        
        width: 100%;
        
-       display: flex;
-       
-       justify-content: space-between;
+        display: grid;
+        
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
        
        align-items: center;
        
-       padding: 0 20px ;
 
        position: absolute;
    }
+
+   .redes{
+       display: grid;
+        
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+        
+        align-items: center;
+        
+        grid-gap: 20px;
+        
+        width: 100%;
+        
+        z-index: 20;
+        
+        padding: 20px;
+    
+        position: absolute;
+        
+        top: 90%;
+        
+        transform: translate(0, -50%);
+
+        z-index: 2;
+    
+    }
+    .redes ul{
+        display: flex;
+        margin: 0;
+        padding-left: 20px;
+    }
+    
+    .redes li{
+        font-weight: 400;
+        font-size: 0.9em;
+        padding: 0 10px;
+        
+    }
+    .redes li a{
+
+        display: flex;
+            
+        align-items: center;
+
+        color: var(--darkblue-color);
+
+        mix-blend-mode: difference;
+
+        transition: all 600ms ease-in-out;
+    }
+
+     .redes li a:hover{
+          color: var(--grey-color);
+     }
+
+     .redes li a svg{
+         font-size: 1.2em;
+     }
 
     .slide-enter-active {
         animation: slide-in .8s ;
@@ -499,48 +637,39 @@ export default {
     
     @keyframes slide-in {
         0% {
-            transform: translateX(1000px);
+            /* transform: translateX(1000px); */
+            opacity: 0
             
         }
     
         100% {
-            transform: translateX(0px);
+            /* transform: translateX(0px); */
+            opacity: 1
         }
     }
 
     @media(max-width: 768px){
-        .project-preview{
+        /* .project-preview{
             display:none;
-        }
+        } */
         .nav-wrapper {
 
             grid-column: 1 / span 6;
+            justify-content: center;
         }
         .nav-wrapper li a{
-            font-size: 7vh;
+            font-size: 6vh;
+            color: var(--darkblue-color);
+            border: 0px;
         }
         .wrapper-container{
+
+            display: none;
             
-            grid-column: 1 / span 6;
-            
-            position: absolute;
-            
-            padding-left: 20px;
-            
-            left: 0;
-            
-            overflow: hidden;
-            
-            right: 0;
-            
-            top: 0;
-            
-            bottom: 0;
+
         }
 
-        .closing-animation{
-            position: relative;
-        }
+     
     }
 
     

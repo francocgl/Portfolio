@@ -18,6 +18,8 @@
     "core-js": "^3.4.4",
     "gsap": "^3.2.6",
     "jquery": "^3.5.0",
+    "json-form-data": "^1.7.2",
+    "json-server": "^0.16.1",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.10",
