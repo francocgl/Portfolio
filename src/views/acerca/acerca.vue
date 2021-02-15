@@ -10,11 +10,15 @@
                                 <h2 class="section-sub-title animate">Franco Martin Cagliolo</h2>
                                 <h1 class="animate">Acerca de mi</h1>
 
-                                <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires.  </p>
+                                
                             </div>
                         </div>
-                        <div class="description-item-1">
-                            <img src="assets/about.jpg" alt="">
+                        <div class="image-box">
+                                <img src="assets/about.jpg" alt="">
+                        </div>
+                        <div class="about-text">
+                            <h2>Diseñador Gráfico/Web</h2>  
+                            <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires.  </p>
                         </div>
                 </div>
 
@@ -86,16 +90,26 @@ export default {
        margin-top: 100px;
     }
 
-  
+    .about-text{
+        padding: 2rem;
+
+    }
     .description {
         line-height: 40px;
-        padding-right: 20px;
-        margin-top: 20px;
         color:var(--darkblue-color);
        
     }
+    .image-box{
+        grid-column: 1 / span 2;
+
+    }
+    .image-box img{
+        width: 100%;
+        object-fit: cover;
+    }
     .description-item-2{
         grid-column: 1 / span 4;
+        margin-bottom: 4rem;
     }
     .description-item-1{
       /*   background: var(--grey-color); */

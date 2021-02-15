@@ -4,7 +4,8 @@
             <div  class="logo-container">
 
                 <router-link :to=" { path: '/' }" class="logo">
-                    <img src="@/assets/logo.svg" alt="logo de marca" id="logo">    
+                    <img src="@/assets/logo.svg" alt="logo de marca" id="logo" class="d-none d-md-block"> 
+                    <img src="@/assets/logo-white.svg" alt="logo de marca" id="logo" class="d-md-none">    
                     <h2 class="logo-name">Franco Martin</h2>  
               
                 </router-link>

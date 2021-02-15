@@ -23,7 +23,11 @@
                     </div>
 
                 
-                <div class="services-grid">
+               
+                </div>
+
+                <div class="list-container">
+                         <div class="services-grid">
                         <div class="services-item">
                             <img src="assets/servicios/uxui.svg" alt="" class="service-icon">
                             <h2>Diseño UX/ UI</h2>
@@ -40,27 +44,6 @@
                             <p>Desarrollo de marca e identidad para sobresalir en el mercado a través del diseño</p>
                         </div>
                   </div>
-                </div>
-
-                         <div class="list-container">
-                        <div class="services-list">
-                            <h4  class="animate-li">Diseño Web</h4>
-                            <ul>
-                                <li  class="animate-li" >HTML / CSS /JS</li>
-                                <li  class="animate-li" >Full Stack Web</li>
-                                <li  class="animate-li" >Responsive Design</li>
-                                <li  class="animate-li" >Vue JS / AJAX</li>
-                            </ul>
-                        </div>
-                        <div class="services-list">
-                            <h4  class="animate-li"> Diseño Grafico</h4>
-                            <ul>
-                                <li  class="animate-li" >UI / UX Design</li>
-                                <li  class="animate-li" >Branding</li>
-                                <li  class="animate-li" >Website Front End</li>
-                                <li  class="animate-li" >Logos</li>
-                            </ul>
-                        </div>
                 </div>   
             
             </section>
@@ -123,16 +106,25 @@ export default {
         margin: 20px 0 30px;
     }
     #services-section{
-        /* margin-top: 100px; */
+        
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
         grid-template-rows: auto 2fr;
         grid-column: 2 / span 3;
     }
-
+    .list-container{
+        display: flex;
+        justify-content: space-between;
+        grid-column: 1 / span 6;
+         display: grid;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+        background: var(--darkblue-color);
+        margin: 6rem 0;
+        padding: 5rem 0;
+    }
     .services-grid{
         display: grid;
-        grid-column: span 3;
+        grid-column: 2 / span 4;
         grid-template-columns: repeat(3, 1fr);
         align-self: center;
         margin: 40px 0 ;
@@ -140,7 +132,6 @@ export default {
     }
      .services-item{
          padding: 20px 15px;
-        background: var(--blue-color);
         text-align: center;
 
      }
@@ -166,11 +157,7 @@ export default {
         color:var(--darkblue-color);
     }
    
-    .list-container{
-        display: flex;
-        justify-content: space-between;
-        grid-column: 1 / span 2;
-    }
+
    
     .services-list h4{
         text-transform: uppercase;
@@ -201,9 +188,6 @@ export default {
         font-size: 16px;
      }
 
-     .list-container{
-         grid-column: 2 / span 2;
-     }
 
     @media (max-width: 768px){
         .services-item-1, .services-item-2{
@@ -211,7 +195,8 @@ export default {
         }
 
         .list-container{
-            grid-column: 1 / span 3;
+            padding: 0;
+            grid-column: 1 / span 6;
         }
 
         .list-container h4{

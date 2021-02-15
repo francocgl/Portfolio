@@ -107,7 +107,7 @@ export default {
 
     @media (max-width: 768px){
         .services-item-1, .services-item-2{
-            grid-column: 1 / span 4;
+            grid-column: 2 / span 4;
         }
 
         .list-container{

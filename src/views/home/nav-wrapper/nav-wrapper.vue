@@ -116,12 +116,7 @@
 
                 </main>
 
-               <!--  <div class="project-preview " v-bind:style="{backgroundImage:'url(assets/nav-item-1.jpg)'}">
-                   
-                    <span class="number-page">01</span>
-               
-                </div>
-                -->
+             
             </div>
 
 
@@ -148,7 +143,24 @@
                         </a>
                     </li>
                 </ul>
-        </div>
+            </div>
+
+            <nav class="nav-wrapper-mobile animate-header">
+                <span v-if="modal > 1" v-on:click="openWrapper(modal - 1)" >
+                    <font-awesome-icon 
+                                    class=" back-btn ml-1 "
+                                    :icon="['fas', 'chevron-right']"
+                            
+                                /> 
+                </span>
+                <span v-if="modal < 4" v-on:click="openWrapper(modal + 1)">
+                    <font-awesome-icon 
+                                    class="  ml-1 "
+                                    :icon="['fas', 'chevron-right']"
+                            
+                                /> 
+                </span>
+            </nav>
 
         </section>
     </div>
@@ -166,11 +178,11 @@ import  Portfolio  from '@/views/home/portfolio';
 import  Services  from '@/views/home/services';
 import  Contact  from '@/views/home/contact';
 
-  import { library } from '@fortawesome/fontawesome-svg-core';
-   
-    import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
-    
-    library.add(faInstagram, faLinkedin, faBehance);
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
+
+library.add(faInstagram, faLinkedin, faBehance, faChevronRight);
 
 export default {
   
@@ -264,16 +276,7 @@ export default {
             if(this.wrapper == false){
                 
                 this.wrapper= true;
-            }/* else
-            {   
-                this.wrapper= false;
-                if(this.modal != value){
-                    setTimeout(() => {
-                        
-                        this.wrapper= true;
-                    }, 1000);
-                }
-            } */
+            }
                     
             return  this.modal = value;
 
@@ -349,8 +352,6 @@ export default {
 
         right: 0;
 
-       /*  background: var(--darkblue-color); */
-
        background-attachment: cover;
     }
    
@@ -367,8 +368,6 @@ export default {
         display: flex;
 
         padding: 0 50px;
-        
-       /*  justify-content: center; */
         
     }
     .nav-list{
@@ -627,6 +626,11 @@ export default {
          font-size: 1.2em;
      }
 
+     .nav-wrapper-mobile{
+         display: none;
+     }
+   
+
     .slide-enter-active {
         animation: slide-in .8s ;
     }
@@ -649,24 +653,36 @@ export default {
     }
 
     @media(max-width: 768px){
-        /* .project-preview{
-            display:none;
-        } */
-        .nav-wrapper {
-
-            grid-column: 1 / span 6;
-            justify-content: center;
-        }
+    .nav-wrapper-mobile{
+         display: flex;
+         position: absolute;
+         left:50%;
+         transform: translate(-50%, -50%);
+         bottom: 1rem;
+         z-index: 100;
+         
+     }
+       .nav-wrapper-mobile  span{
+       
+        display: block;
+        margin: 0 1.5rem;  
+          color: #fff;
+          font-size: 2rem;
+     }
+    .nav-wrapper-mobile .back-btn{
+        transform: rotate(180deg);
+    }
+           
         .nav-wrapper li a{
             font-size: 6vh;
             color: var(--darkblue-color);
             border: 0px;
         }
-        .wrapper-container{
-
+        .nav-wrapper, .redes{
             display: none;
-            
-
+        }
+        .wrapper-container{
+            grid-column: 1 / span 6;
         }
 
      
