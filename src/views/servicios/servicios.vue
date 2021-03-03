@@ -20,6 +20,7 @@
                 </div>
             </section>
 
+<<<<<<< HEAD
             <section class="list-container">
                 <div class="services-grid">
                     <div class="services-item">
@@ -44,6 +45,32 @@
                 <p>"La interfaz del usuario es como un chiste: si tienes que explicarla no es tan buena."
                     <small>Martin LeBlanc.</small>
                 </p>
+=======
+                
+               
+                </div>
+
+                <div class="list-container">
+                         <div class="services-grid">
+                        <div class="services-item">
+                            <img src="assets/servicios/uxui.svg" alt="" class="service-icon">
+                            <h2>Diseño UX/ UI</h2>
+                            <p>Creación de experiencias de usuario para una clara y simple navegación en la web</p>
+                        </div>
+                        <div class="services-item" >
+                            <img src="assets/servicios/web.svg" alt="" class="service-icon">
+                            <h2>Desarrollo Web</h2>
+                            <p>Desarrollo tanto Back como Front End para crear webs dinámicas y adaptables a distintos dispositivos</p>
+                        </div>
+                        <div class="services-item" >
+                            <img src="assets/servicios/branding.svg" alt="" class="service-icon">
+                            <h2>Branding</h2>
+                            <p>Desarrollo de marca e identidad para sobresalir en el mercado a través del diseño</p>
+                        </div>
+                  </div>
+                </div>   
+            
+>>>>>>> 0e3802d489a8218f8ca6628fc54a6d7eb7d9ad8d
             </section>
             
          
@@ -150,7 +177,13 @@ export default {
     .section-title h1{
         color:var(--darkblue-color);
     }
+<<<<<<< HEAD
 
+=======
+   
+
+   
+>>>>>>> 0e3802d489a8218f8ca6628fc54a6d7eb7d9ad8d
     .services-list h4{
         text-transform: uppercase;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -175,9 +208,12 @@ export default {
         margin-bottom: 20px;
     }
 
+<<<<<<< HEAD
     .section-text { height: 50vh; display: flex; align-items: center; justify-content: center; padding: 2rem}
     .section-text p{ font-weight: 600; font-size: 1.4em; text-align:  center;   color: var(--darkblue-color);}
     .section-text small{display: block;   color: var(--grey-color); widows: 100%; text-align: center; margin-top: 1.5rem}
+=======
+>>>>>>> 0e3802d489a8218f8ca6628fc54a6d7eb7d9ad8d
 
     @media (max-width: 768px){
         .services-item-1, .services-item-2{
@@ -187,7 +223,10 @@ export default {
         .list-container{
             padding: 0;
             grid-column: 1 / span 6;
+<<<<<<< HEAD
             margin: 2rem 0;
+=======
+>>>>>>> 0e3802d489a8218f8ca6628fc54a6d7eb7d9ad8d
         }
 
         .list-container h4{
