@@ -8,12 +8,8 @@
                         <p class="animate-header">Me desempeño como desarrollador web y sumándole el diseño gráfico te puedo ayudar a hacer crecer tu marca y fomentar la comunicación a nivel digital. </p>
                         <div class="animate-header">
 
-                            <router-link to="/servicios" class="button "> Ver Servicios
-                                <font-awesome-icon 
-                                    class=" redes-icon ml-1"
-                                    :icon="['fas', 'arrow-right']"
-                            
-                                />
+                            <router-link to="/servicios" class="button-home"> Ver Servicios
+                                <i class="icon-arrow-small-short"></i>
                             </router-link>
                         </div>
                     </div>
@@ -107,7 +103,7 @@ export default {
 
     @media (max-width: 768px){
         .services-item-1, .services-item-2{
-            grid-column: 1 / span 4;
+            grid-column: 2 / span 4;
         }
 
         .list-container{

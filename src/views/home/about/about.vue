@@ -11,12 +11,7 @@
                             <p ref="box" class="description animate">Me desempeño como desarrrolador web y estoy terminando la carrera de diseñador gráfico en la     Universidad de Buenos   Aires.  </p>
                             <div class="animate">
 
-                                <router-link to="/acerca" class="button "> Ver más
-                                    <font-awesome-icon 
-                                        class=" redes-icon ml-1"
-                                        :icon="['fas', 'arrow-right']"
-                                
-                                    />
+                                <router-link to="/acerca" class="button-home"> Ver más <i class="icon-arrow-small-short"></i>
                                 </router-link>
 
                             </div>

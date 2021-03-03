@@ -1,19 +1,21 @@
 <template>
     <div>
         
-        <Header :passingRouter="true" />
+        <Header :passingRouter="true" :passingPage="'portfolio'" />
         
         <Redes />
 
-        <main id="portfolio-section">
-           
-            <div class="portfolio-grid ">
-                <div class="portfolio">
-                    <div class="section-title   ">
-            
+        <main class="main">
+           <section>
+                    <div class="section-title">
                         <h2 class="animate-header">Trabajos y Proyectos</h2>
                         <h1 class="animate-header">Portfolio </h1>
                     </div>
+
+           </section>
+
+            <section class="portfolio-grid ">
+                <div class="portfolio">
 
                     <div 
                         v-for="(post, index) in posts" :key="index"
@@ -39,29 +41,12 @@
 
                                 </div>
                             </router-link>
-                           
-
-                                               
                     </div>
                 
-                    <div class="item  tall"></div>
-                    <div class="item medium"></div>
-                    <div class="item tall"></div>
-                
-                    <div class="item medium"></div>
-                    <div class="item tall"></div>
-                    <div class="item medium"></div>
-
-                    <div class="item medium"></div>
-                    <div class="item tall"></div>
-                    <div class="item medium"></div>
-
-                    <div class="item medium"></div>
-                    <div class="item tall"></div>
-                    <div class="item medium"></div>
+                  
 
                 </div>
-            </div>  
+            </section>  
 
         </main>
    
@@ -78,6 +63,7 @@
     import {  TimelineLite } from 'gsap';
 
 export default {
+   
     components:{
         Footer,
         Header,
@@ -107,48 +93,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    #portfolio-section{
-        display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
-        align-items: center;
-        grid-template-rows: auto 1fr;
-                
-    }
-    .section-title{
-        grid-column: 1 /span 6;
-        grid-row: 1;
-    }
-    .section-title h1{
-
-        color: var(-darkblue-color);
-        font-size: 64px;
-    }
    
-    .section-title p{
-        color: var(-darkblue-color);
-        margin-top: 20px;
-    }
-   
-     .portfolio-grid{
+      .portfolio-grid{
         grid-column: 2 / span 4;
         grid-row: 2;
+        margin-top: 3rem;
      }
 
     .portfolio{
         display: grid;
-        margin: 100px 0;
         grid-template-columns: repeat(6, minmax(100px, 1fr));
         grid-template-rows: repeat(12, minmax(100px, 1fr));
         grid-gap: 20px;
         width: 100%;
     }
     .medium{
-        grid-column: span 2;
-        grid-row: span 2;
+        grid-column: span 3;
+        grid-row: span 4;
     }
     .tall{
         grid-row: span 3;
-        grid-column: span 2;
+        grid-column: span 3;
 
     }
     
@@ -167,7 +132,7 @@ export default {
          overflow: hidden;
      }
      .overlay-img{
-         background: #112a40c2;
+         background: var(--darkblue-color);
          position: absolute;
          top: 0;
          left:0;
@@ -177,9 +142,7 @@ export default {
          transition: all 1s ease-in-out;
        
      }
-    .img:hover {
-        filter: grayscale(1);
-     }
+
 
      .img:hover .overlay-img{
          opacity:1;
@@ -209,12 +172,8 @@ export default {
      }
    
 
-      @media (max-width: 768px){
-        .section-title{
-            grid-column: 1 / span 6;
-         
-        }
-
+    @media (max-width: 768px){
+   
         .portfolio{
             grid-template-columns: repeat(6, 1fr );
             grid-template-rows: repeat(12, 1fr );
@@ -222,7 +181,7 @@ export default {
 
         .medium, .tall{
             grid-column: span 6;
-            grid-row: span 2;
+            grid-row: span 10;
         }
      
      }

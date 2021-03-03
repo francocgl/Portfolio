@@ -21,12 +21,12 @@
         "title": "Susy Shock",
         "category" : "Diseño",
         "description": "Desplegable tipografico realizado para la cátedra Rico en la UBA",
-        "img_principal": "Susy1.jpg",
+        "img_principal": "susy/Susy1.jpg",
         "images": [
-            { "name" : "Susy1.jpg" },
-            { "name" : "Susy2.jpg" },
-            { "name" : "Susy3.jpg" },
-            { "name" : "Susy4.jpg" }
+            { "name" : "susy/Susy1.jpg" },
+            { "name" : "susy/Susy2.jpg" },
+            { "name" : "susy/Susy3.jpg" },
+            { "name" : "susy/Susy4.jpg" }
         ],
         "site": "https://Susy.com.ar",
         "implementacion": "Diseño Editorial",

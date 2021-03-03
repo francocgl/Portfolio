@@ -2,37 +2,16 @@
     <div>
         <section  id="contact-section">
             <div class="contact-content-a">
-
-              
-            <div class="section-title">
-                <h2 class="animate-input">Contacto</h2>
-                <h1 class="animate-input">Trabajemos juntos</h1>
-                <p  class="animate-input"> ¿Necesitas ayuda con algún proyecto o deseas iniciar uno nuevo? </p> 
-                <div class=" animate-input">
-                    <a  href="mailto:cagliolo@gmail.com" class="button animate-header">Escribime</a>
+                <div class="section-title">
+                    <h2 class="animate-input">Contacto</h2>
+                    <h1 class="animate-input">Trabajemos juntos</h1>
+                    <p  class="animate-input"> ¿Necesitas ayuda con algún proyecto o deseas iniciar uno nuevo? </p> 
+                    <div class=" animate-input">
+                        <a  href="mailto:cagliolo@gmail.com" class="button-home animate-header">Escribime
+                            <i class="icon-arrow-small-short"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-                 <div class="contact-info">
-                
-                    <ul class="info-container">
-                    
-                        <li>LOCACI&Oacute;N</li>
-                    
-                        <li> La Lucila, Buenos Aires, Argentina.</li>
-                    
-                    </ul>
-                    
-                      <ul class="info-container">
-                    
-                        <li>EMAIL</li>
-                    
-                        <li><a href="mailto:cagliolo@gmail.com" class="mail">  franco@martin.com.ar</a></li>
-                    
-                    </ul>
-                
-                </div>
-                     
-           
              </div>
         </section>
     </div>
@@ -42,7 +21,11 @@
 
     import {  TimelineLite } from 'gsap';
 
-  /*   import axios from 'axios'; */
+    import { library } from '@fortawesome/fontawesome-svg-core';
+   
+    import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+    
+    library.add(faArrowRight);
 
 
     import $ from 'jquery';
@@ -162,7 +145,6 @@ export default {
     
 
     .contact-content-a{
-        grid-row: 2;
         /* margin-top: 40px; */
         grid-column: 2 / span 4;
         align-self: center;

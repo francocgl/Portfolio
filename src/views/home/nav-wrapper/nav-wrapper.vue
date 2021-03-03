@@ -17,13 +17,10 @@
                                 'active-modal': (modal == 1) ? true : false
                             }"
                         >
-                            <a  
-                                href="/acerca"
-                                v-on:mouseenter="openWrapper(1)"
-                            >
-
-                                <span data-text="Acerca">Acerca</span>
-
+                                <a  
+                                    v-on:mouseenter="openWrapper(1)"
+                                >
+                                 <router-link  to="/acerca" > <span data-text="Acerca">Acerca</span> </router-link>
                             </a>
                         </li>
             
@@ -39,7 +36,7 @@
                                 v-on:mouseenter="openWrapper(2)"
                             >
 
-                                <span data-text="Servicios"> Servicios</span>
+                                <router-link  to="/servicios" >  <span data-text="Servicios"> Servicios</span></router-link>
 
                             </a>
                         </li>
@@ -55,7 +52,7 @@
                                 v-on:mouseenter="openWrapper(3)"
                                 :passingRouter="true"
                             >
-                                <span data-text="Portfolio">Portfolio</span>
+                                 <router-link  to="/portfolio" > <span data-text="Portfolio">Portfolio</span></router-link>
                             
                             </a>
                         </li>
@@ -67,12 +64,9 @@
                             }"
                         >
                             <a 
-                                  href="/contacto"
                                 v-on:mouseenter="openWrapper(4)"
-                                
                             >
-
-                                <span data-text="Contacto">Contacto</span>
+                                 <router-link  to="/contacto" > <span data-text="Contacto">Contacto</span></router-link>
                             </a>
                         </li>
             
@@ -116,39 +110,44 @@
 
                 </main>
 
-               <!--  <div class="project-preview " v-bind:style="{backgroundImage:'url(assets/nav-item-1.jpg)'}">
-                   
-                    <span class="number-page">01</span>
-               
-                </div>
-                -->
+             
             </div>
 
 
             <div class="redes">
                 <ul>
                     <li>
-                        <a ref="box" href="" target="_blank">
+                        <a ref="box" href="https://www.instagram.com/francocagliolo/?hl=es-la" target="_blank">
                             <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'instagram']"  /> -->
                             Instagram
                         </a>
                     </li>
 
                     <li>
-                        <a ref="box" href="" target="_blank">
+                        <a ref="box" href="https://www.linkedin.com/in/franco-cagliolo-5534b0139/" target="_blank">
                            <!--  <font-awesome-icon class=" redes-icon" :icon="['fab', 'linkedin']" /> -->
                             Linkedin
                         </a>
                     </li>
 
                     <li>
-                        <a ref="box" href="" target="_blank">
+                        <a ref="box" href="https://www.behance.net/francocgl" target="_blank">
                             <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'behance']" /> -->
                             Behance
                         </a>
                     </li>
                 </ul>
-        </div>
+            </div>
+
+            <nav class="nav-wrapper-mobile animate-header">
+                <span v-if="modal > 1" v-on:click="openWrapper(modal - 1)" >
+                    <i class="icon-arrow-left-big back-btn"></i>
+                 
+                </span>
+                <span v-if="modal < 4" v-on:click="openWrapper(modal + 1)">
+                   <i class="icon-arrow-big back-btn"></i>
+                </span>
+            </nav>
 
         </section>
     </div>
@@ -166,11 +165,11 @@ import  Portfolio  from '@/views/home/portfolio';
 import  Services  from '@/views/home/services';
 import  Contact  from '@/views/home/contact';
 
-  import { library } from '@fortawesome/fontawesome-svg-core';
-   
-    import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
-    
-    library.add(faInstagram, faLinkedin, faBehance);
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
+
+library.add(faInstagram, faLinkedin, faBehance, faChevronRight);
 
 export default {
   
@@ -193,20 +192,20 @@ export default {
          var t2 = new TimelineLite();
              t2.from( $('.project-preview'), 0.5, {
                 width: '0',
-                 ease: Expo.easeInOut
+                ease: Expo.easeInOut
     
             }).to( $('.project-preview'), 0.5, {
                 width: '700px',
                 backgroundImage:'url(assets/nav-item-1.png)',
                 overflow: 'visible',
-                 ease: Expo.easeInOut
+                ease: Expo.easeInOut
                 
             });
             t2.from( $('.nav-item'), 1, {
                 opacity: 0,
                 stagger: 0.2,
-                y: 50,
-                 ease: Expo.easeOut,
+                y: -50,
+                ease: Expo.easeOut,
             });
             
     },
@@ -214,27 +213,7 @@ export default {
             asd(){
                  $('.nav-item').addClass('fill');
             },
-       /*  mouseenter:  function(id){
-            $('.nav-item').removeClass('active');
-            $('.nav-item-'+id).addClass('active');
-            
-            $('.project-preview').addClass('.project-preview-'+id);
-     
-           
-           var t1 = new TimelineLite();
-           
-           t1.set($(".project-preview"), {backgroundImage:'url(assets/nav-item-'+ id +'.png)'});
 
-            t1.from( $('.project-preview '), 1, {
-                opacity: 0,
-                ease: Expo.easeInOut
-            }).to( $('.project-preview'), 1, {
-                opacity: 1,
-                overflow: 'visible',
-                ease: Expo.easeInOut
-            });
-
-        }, */
         openWrapper: function(value){
 
             $('.nav-item').removeClass('active');
@@ -264,16 +243,7 @@ export default {
             if(this.wrapper == false){
                 
                 this.wrapper= true;
-            }/* else
-            {   
-                this.wrapper= false;
-                if(this.modal != value){
-                    setTimeout(() => {
-                        
-                        this.wrapper= true;
-                    }, 1000);
-                }
-            } */
+            }
                     
             return  this.modal = value;
 
@@ -330,10 +300,10 @@ export default {
 
         overflow: hidden;
     }
-
+    .wrapper-content{ width: 100%;}
     .wrapper-container .wrapper{
 
-        background: #212529c4;
+        background: rgba(34, 38, 42, 0.60);
         
         position: absolute;
 
@@ -349,9 +319,11 @@ export default {
 
         right: 0;
 
-       /*  background: var(--darkblue-color); */
-
        background-attachment: cover;
+
+       display: flex;
+       
+       align-items: center;
     }
    
     .nav-wrapper{
@@ -367,8 +339,6 @@ export default {
         display: flex;
 
         padding: 0 50px;
-        
-       /*  justify-content: center; */
         
     }
     .nav-list{
@@ -386,7 +356,7 @@ export default {
 
          -webkit-text-stroke: 0.5px var(--darkblue-color);
         
-        font-weight: 600;
+        font-weight: 700;
         
     }
 
@@ -620,12 +590,17 @@ export default {
     }
 
      .redes li a:hover{
-          color: var(--grey-color);
+          color: var(--gold-color);
      }
 
      .redes li a svg{
          font-size: 1.2em;
      }
+
+     .nav-wrapper-mobile{
+         display: none;
+     }
+   
 
     .slide-enter-active {
         animation: slide-in .8s ;
@@ -649,24 +624,36 @@ export default {
     }
 
     @media(max-width: 768px){
-        /* .project-preview{
-            display:none;
-        } */
-        .nav-wrapper {
-
-            grid-column: 1 / span 6;
-            justify-content: center;
-        }
+    .nav-wrapper-mobile{
+         display: flex;
+         position: absolute;
+         left:50%;
+         transform: translate(-50%, -50%);
+         bottom: 1rem;
+         z-index: 100;
+         
+     }
+       .nav-wrapper-mobile  span{
+       
+        display: block;
+        margin: 0 1.5rem;  
+          color: #fff;
+          font-size: 2rem;
+     }
+    .nav-wrapper-mobile .back-btn{
+        transform: rotate(180deg);
+    }
+           
         .nav-wrapper li a{
             font-size: 6vh;
             color: var(--darkblue-color);
             border: 0px;
         }
-        .wrapper-container{
-
+        .nav-wrapper, .redes{
             display: none;
-            
-
+        }
+        .wrapper-container{
+            grid-column: 1 / span 6;
         }
 
      

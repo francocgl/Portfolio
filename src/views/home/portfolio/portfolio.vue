@@ -13,12 +13,8 @@
                     </div>
 
                     <div class="animate-header">
-                          <router-link to="/portfolio" class="button  button-portfolio"> Ver todos
-                                <font-awesome-icon 
-                                    class=" redes-icon ml-1"
-                                    :icon="['fas', 'arrow-right']"
-                            
-                                />
+                          <router-link to="/portfolio" class="button-home  button-portfolio"> Ver todos
+                            <i class="icon-arrow-small-short"></i>
                         </router-link>
                     </div>
 

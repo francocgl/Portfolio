@@ -11,12 +11,17 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     mode: "history",
+    scrollBehavior() {
+
+        return {x: 0, y: 0}
+    },
     routes: [
         {
             path: "/", 
             name: 'home',
             component: Home,
             beforeEnter(to, from, next) {
+                
                 Promise.all([
                     window.scrollTo(0, 0)
                 ])
@@ -29,7 +34,6 @@ export default new VueRouter({
                     throw e;
                 });
             }
-            
         },
         {
             path: "/portfolio",
@@ -55,7 +59,6 @@ export default new VueRouter({
             name: "contacto",
             component: Contacto,
             beforeEnter(to, from, next) {
-
 
                 Promise.all([
                     window.scrollTo(0, 0)
@@ -119,12 +122,11 @@ export default new VueRouter({
             component: verPortfolio, 
             props: castRouteParams,
             beforeEnter(to, from, next) {
-                           
+              
                 Promise.all([
-                    window.scrollTo(0, 0)
-                   
                 ])
-                    .then(async () => {
+                .then(async () => {
+                      
                         next();
                     })
                     .catch(e => {
@@ -139,16 +141,14 @@ export default new VueRouter({
             name: "error",
             component: Error,
             
-        }
+        },
     ]
+})
+//  this.routes.beforeEach((to, from, next) => {
+//     window.scrollTo(0, 0);
 
-    
-});
-/* routes.beforeEach((to, from, next) => {
-    window.scrollTo(0, 0);
-
-    next();
-}); */
+//     next();
+// });
 function castRouteParams(route) {
     return {
         id: Number(route.params.id),

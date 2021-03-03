@@ -11,10 +11,8 @@
                     <span class="times" ></span>
                 
                 </div>
-
-            
+           
         </header>
-
 
         <div class="content-menu">
             
@@ -24,26 +22,26 @@
                     
                     <li class="nav-item nav-item-1 nav-item-animate">
                         <a   @click="onClose(1)">
-                            <span data-text="Acerca">Acerca</span>
+                             <router-link  to="/acerca"   > <span data-text="Acerca">Acerca</span></router-link>
                         </a>
                     </li>
         
                     <li class="nav-item nav-item-2 nav-item-animate"  >
                         <a   @click="onClose(2)">
-                            <span data-text="Servicios" > Servicios</span>
+                              <router-link  to="/servicios"><span data-text="Servicios" > Servicios</span></router-link>
                         </a>
                     </li>
         
                     <li class="nav-item nav-item-3 nav-item-animate">
                         <a    @click="onClose(3)">
-                            <span data-text="Portfolio">Portfolio</span>
+                            <router-link   to="/portfolio"><span data-text="Portfolio">Portfolio</span></router-link>
                         </a>
                     </li>
 
                     <li class="nav-item nav-item-4 nav-item-animate">
                         <a   @click="onClose(4)">
 
-                            <span data-text="Contacto">Contacto</span>
+                            <router-link   to="/contacto"><span data-text="Contacto">Contacto</span></router-link >
                         </a>
                     </li>
         
@@ -54,22 +52,46 @@
                 <ul class="nav-list" v-if="router">
                     
                     <li class="nav-item nav-item-animate nav-item-1 ">
-                        <router-link  to="/acerca"   > <span data-text="Acerca">Acerca</span></router-link>
+                        <router-link  to="/acerca"   > <span data-text="Acerca" :class=" {'active' : (page == 'acerca') ? true : false} ">Acerca</span></router-link>
                     </li>
         
                     <li class="nav-item nav-item-animate nav-item-2"  >
-                        <router-link  to="/servicios"><span data-text="Servicios" > Servicios</span></router-link>
+                        <router-link  to="/servicios"><span data-text="Servicios" :class=" {'active' : (page == 'servicios') ? true : false} " > Servicios</span></router-link>
                     </li>
         
                     <li class="nav-item nav-item-animate nav-item-3">
-                        <router-link   to="/portfolio"><span data-text="Portfolio">Portfolio</span></router-link>
+                        <router-link   to="/portfolio"><span data-text="Portfolio" :class=" {'active' : (page == 'portfolio') ? true : false}">Portfolio</span></router-link>
                     </li>
 
                     <li class="nav-item nav-item-animate nav-item-4">
-                        <router-link   to="/contacto"><span data-text="Contacto">Contacto</span></router-link >
+                        <router-link   to="/contacto"><span data-text="Contacto" :class=" {'active' : (page == 'contacto') ? true : false} ">Contacto</span></router-link >
                     </li>
         
                 </ul>
+
+              
+                    <ul class="redes nav-item-animate">
+                        <li>
+                            <a ref="box" href="https://www.instagram.com/francocagliolo/?hl=es-la" target="_blank">
+                                <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'instagram']"  /> -->
+                                Instagram
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ref="box" href="https://www.linkedin.com/in/franco-cagliolo-5534b0139/" target="_blank">
+                            <!--  <font-awesome-icon class=" redes-icon" :icon="['fab', 'linkedin']" /> -->
+                                Linkedin
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ref="box" href="https://www.behance.net/francocgl" target="_blank">
+                                <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'behance']" /> -->
+                                Behance
+                            </a>
+                        </li>
+                    </ul>
             </div>
             
             <div class=" info-contacto">
@@ -101,20 +123,26 @@
                         <li>REDES</li>
                     
                         <li>
-                            <font-awesome-icon 
-                                class=" redes-icon"
-                                :icon="['fab', 'behance']"
-                            />
+                            <a href="https://www.behance.net/francocgl">
+                                <font-awesome-icon 
+                                    class=" redes-icon"
+                                    :icon="['fab', 'behance']"
+                                />
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/feed/">
+                                <font-awesome-icon 
+                                    class=" redes-icon"
+                                    :icon="['fab', 'linkedin']"
+                                />
+                            </a>
 
-                            <font-awesome-icon 
-                                class=" redes-icon"
-                                :icon="['fab', 'linkedin']"
-                            />
-
-                            <font-awesome-icon
-                                class=" redes-icon"
-                                :icon="['fab', 'instagram']" 
-                            />
+                            <a href="https://www.instagram.com/francocagliolo/?hl=es-la">
+                                <font-awesome-icon
+                                    class=" redes-icon"
+                                    :icon="['fab', 'instagram']" 
+                                />
+                            </a>
 
                         </li>
                     
@@ -142,7 +170,8 @@ import {  TimelineLite } from 'gsap';
 export default {
     props:{
         passingMenu : Boolean,
-        router: Boolean
+        router: Boolean,
+        page: String
     },
     mounted(){
         
@@ -288,6 +317,9 @@ export default {
         position: relative;
         display: block;
     }
+     .nav-wrapper .nav-item span.active{
+         color: var(--gold-color);
+     }
      .nav-wrapper .nav-item span:before{
          width: 0;
          color: var(--gold-color);
@@ -317,9 +349,9 @@ export default {
         color: #fff;
     }
 
-     .info-container li:nth-child(2){
+     .info-container li:nth-child(2) a, .info-container li:nth-child(2){
          color: var(--grey-color);
-        font-size: 16px;
+        font-size: 1.2em;
     }
 
     .menu-times{
@@ -385,9 +417,13 @@ export default {
         width: 35px;
         
     }
+     .nav-wrapper-mobile .redes {
+         display: none
+     }
 
     @media (max-width: 768px){
- 
+        .nav-wrapper-mobile .redes  { display: flex; width: 100%; position: absolute; bottom: 10%; justify-content: space-around;   }
+        .nav-wrapper-mobile .redes  li a{ font-size: 1em; font-weight: 400; color: var(--grey-color); }
         .info-contacto{
             display: none;
         }

@@ -1,45 +1,47 @@
 <template>
     <div>
         <header class="nav-header" id="navHeader" >
-            <div  class="logo-container">
 
+            <div  class="logo-container">
                 <router-link :to=" { path: '/' }" class="logo">
-                    <img src="@/assets/logo.svg" alt="logo de marca" id="logo">    
+                    <img src="@/assets/logo.svg" alt="logo de marca" id="logo" 
+                        :class="{
+                                'd-none' :  (passingRouter == false) ? true : false,
+                                'd-md-block': (passingRouter == false) ? true : false }" > 
+                    <img src="@/assets/logo-white.svg" alt="logo de marca" id="logo" class="d-md-none logo-white">    
                     <h2 class="logo-name">Franco Martin</h2>  
-              
                 </router-link>
             </div>
                 
-                <ul 
-                  :class="{
-                            'idioma' : true,
-                            'white-text' : (passingRouter == false) ? true : false
-                        }" >
-        
-                   <!--  <li class="active">ES</li>
-        
-                    <li>EN</li> -->
-                    <li><span class="round"></span> Disponible para proyectos</li>
-        
-                </ul>
-        
-                <div 
-                    :class="{
-                            'menu-bars' : true,
-                            'animateHeader' : true,
-                            'white' : (passingRouter == false) ? true : false
-                        }" 
-                     @click="openingMenu()" >
-                    <span class="bar-1 bars"></span>
-                
-                </div>
+            <ul 
+                :class="{
+                        'idioma' : true,
+                        'white-text' : (passingRouter == false) ? true : false
+                    }" >
+    
+                <!--  <li class="active">ES</li>
+    
+                <li>EN</li> -->
+                <li><span class="round"></span> Disponible para proyectos</li>
+    
+            </ul>
+    
+            <div 
+                :class="{
+                        'menu-bars' : true,
+                        'animateHeader' : true,
+                        'white' : (passingRouter == false) ? true : false
+                    }" 
+                    @click="openingMenu()" >
+                <span class="bar-1 bars"></span>
             
+            </div>
         </header>
 
         <div>
             <transition name="slide">
 
-                <mobileHeader v-if="openMenu == true" @close="closeMenu" :router="passingRouter" />
+                <mobileHeader v-if="openMenu == true" @close="closeMenu" :router="passingRouter" :page="passingPage" />
         
             </transition>
         </div>
@@ -62,7 +64,8 @@ export default {
        
     },
     props:{
-        passingRouter: Boolean
+        passingRouter: Boolean,
+        passingPage : String
     },
     data() {
         return{
@@ -122,11 +125,8 @@ export default {
         grid-column: 1 / span 2 ;
     }
 
-    .logo{
-        display: flex;
-        align-items: center;
-
-    }
+    .logo{ display: flex; align-items: center; width: 170px; transition: .3s ease-in-out;}
+    .logo:hover{ transform: scale( 1.05);}
     #logo{
         width: 35px;
         margin-right: 10px;
@@ -159,7 +159,7 @@ export default {
         transition: all 600ms ease-in-out;
     }
     .logo-name{
-        font-weight: 600;
+        font-weight: 700;
 
         font-size: 0.9em;
 

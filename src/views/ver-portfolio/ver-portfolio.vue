@@ -1,66 +1,84 @@
 <template>
     <div>
-        <Header :passingRouter="true" />
-         
-        <main>
-            <section>
-
-                <article class="headline">
-                    <div class="section-title">
-                        <h2>{{ getItem.category }}</h2>
-                        <h1>{{ getItem.title }}</h1>
-                    </div>
-                        
-                    <div class="project-info">
-                        <ul class="project-ul">
-                    <!--         <li class="animate-list">IMPLEMENTACI&Oacute;N</li> -->
-                            <li class="animate-list">{{ getItem.implementacion }}</li>
-                            <li class="animate-list" >
-                                <a v-bind:href=" getItem.site " target="_blank">{{ getItem.site }}</a>
-                            </li>
-                        </ul>
-                        
-                    
-                        
-                        <p class="animate-list">{{ getItem.description }}</p>
-
-                        <ul>
-                            <li class="animate-list fecha" >{{ getItem.fecha }}</li>
-                          
-                        </ul>
-                    </div>
-
-                </article>
-              
-                <div  v-for="(img, index) in getItem.images" :key="index" class="portfolio-grid">
+        <Header :passingRouter="true" :passingPage="'portfolio'" />
+    
+        <section class="headline" :style="{ backgroundImage: 'url(/assets/portfolio/' +  getItem.img_principal + ')' }">
+            <div class="section-title">
                 
+                <router-link to="/portfolio">  <i class="icon-arrow-left-big"></i>Volver a Proyectos</router-link>
+            </div>
+        </section>
+                        
+        <main class="main">
+                <article class="project-info">
                     <div>
+                        <ul class="project-ul">
+                            <li>Proyecto</li>
+                            <li class="animate-list">{{ getItem.category }}</li>
+                        </ul>
+                        <ul class="project-ul" v-if="getItem.web > ''">
+                            <li> Web</li>
+                            <li class="animate-list"><a :href="getItem.web" target="_blank" >{{ getItem.web }}</a></li>
+                        </ul>
+                    </div>
+                        <div class="desscription">
+                            <h1  class="animate-list">{{ getItem.title }}</h1>
+                            <p class="animate-list">{{ getItem.description }} </p>
+                        </div>
+                </article>
+
+                <section class="project-details">
+                    
+                    <ul class="project-ul">
+                        <li class="animate-list">ROL</li>
+                        <li><p class="animate-list fecha">{{ getItem.implementacion }}</p></li>
+                    </ul>
+                    
+                    <ul class="project-ul">
+                        <li class="animate-list">Fecha</li>
+                        <li class="animate-list" >
+                            <a v-bind:href=" getItem.site " target="_blank">{{ getItem.site }}</a>
+                        </li>
+                        <li><p class="animate-list fecha">{{ getItem.fecha }}</p></li>
+                    
+                    </ul>
+                        <ul class="project-ul">
+                        <li class="animate-list">Herramientas</li>
+                        <li><p class="animate-list fecha">{{ getItem.herramientas }}</p></li>
+                    </ul>
+                </section>
+              
+                <section  v-for="(img, index) in getItem.images" :key="index" class="portfolio-grid">
+                
+                    <div class="img-box">
                         <img v-bind:src="'/assets/portfolio/' + img.name" class="portfolio-img" />
                                  
                     </div>
-                                        
-                </div>
-                
-                <div class="next-work d-flex justify-content-between" >
-                    <div>
+                        
+                     <article v-if="index == 1 && getItem.description2 > '' " class="section-text">
+                        <div  >
+                            <p >{{ getItem.description2 }}</p>
 
-                    <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:getItem.id-1} }" v-if="anteriorExists" >
-                       
+                        </div>
+                    </article>
+                </section>
 
-                            <h3>Anterior Proyecto</h3>
-                    </router-link>
-                    </div>
-                    <div>
+                <section v-if="getItem.video > ''">
+                    <video controls width="100%">
 
-                    <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:getItem.id+1} }" v-if="siguienteExists">
+                        <source v-bind:src="'/assets/portfolio/' + getItem.video"
+                                type="video/mp4">
+                        Sorry, your browser doesn't support embedded videos.
+                    </video>
+                </section>
 
-                            <h3>Siguiente Proyecto</h3>
-                            
-                    </router-link>
-                    </div>
-                </div>
+                <section class="next-work" >
+                        <router-link  active-class="active" :to=" { name: 'portfolio' }">
+                                <h3 class="next"><i class="icon-arrow-left-big"></i>Ver todos los trabajos</h3>
+                        </router-link>
+                </section>
 
-            </section>
+          
             <Redes />
             <ProgressBar />
         </main>
@@ -114,8 +132,6 @@ export default {
         }
     },
     mounted(){
-            /* this.$store.dispatch('getPost', this.fund); */ 
-
             var t2 = new TimelineLite();
              t2.from( $('.animate-list'), 1, {
                 opacity: 0,
@@ -134,119 +150,75 @@ export default {
 
 <style lang="scss" scoped>
 
-    .wrapper-container{
-        grid-column: 3 / span 4;
+    .headline{ height: 70vh; position: relative; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;  }
 
-        position: relative;
-
-        padding-left: 20px;
-        height: 100%;
-
-        width: 100%;
-
-        background: var(--darkblue-color); 
-
-    }
-
-    .wrapper-container .wrapper{
-        position: relative;
-
-        width: 100%;
-
-        z-index: 40;
-
-        top: 0;
-
-        left: 0;
-
-        bottom: 0;
-
-        right: 0;
-        
-    }
-    main{
+    .headline .section-title{
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translate(-50%, -5%);
+        z-index: 2;
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr ;
-        grid-template-rows: 70px  1fr ;
-    }
-    main section{
-
-        grid-column: 2 / span 4;
-        grid-row: 2;
-    }
-
-
-    .headline{
-        margin-bottom: 40px;
-        display:grid;
-        grid-template-columns: 1fr 1fr; 
-        
-        align-items: baseline;
-    }
-
-    .section-title{
-        grid-column: span 2;
-        grid-row: 1;
-    }
-
-    .headline p {
-        font-size:16px;
-        padding: 10px 0;
-        color: var(--darkblue-color);
-        line-height: 40px;
-    }
-     .project-info{
-         display: flex;
-         justify-content: space-between;
-         grid-column: 1 / span 2;
-     }
-    .project-info ul{
-        padding: 20px 0;
-    }
-
-    .project-ul li:nth-child(1){
-        
-        font-weight: 600;
-        
-        padding-bottom: 10px;
-        
-        font-size: 0.9em;
-        
-        color: var(--darkblue-color);
-        
-        font-size: 1em;
-
-        text-transform: uppercase;
-
-     }
-
-     .fecha{
-    
-     }
-      .project-info ul li:nth-child(2),  .project-info ul li:nth-child(2) a{
-        color: var(--darkblue-color);
-        font-weight: 600;
-     }
-
-    .portfolio-grid{
-         grid-column: 2 / span 4;
-    }
-
-    .portfolio-grid .portfolio-img{
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
         width: 100%;
-        margin: 10px 0;
     }
+  
+    .headline .section-title a{  color: var(--darkblue-color);  transition: all .6s ease-in-out; font-weight: 600; grid-column: 2 / 2; background: var(--white-color); text-align: center; padding: .7rem 0; border-radius: 25px; }
+    .headline .section-title a i{ font-weight: 600; margin-right: .5rem;}
+    .headline .section-title a:hover{ background: var(--gold-color); }
 
-    .next-work{
-        text-align: right;
-        padding: 30px 0;
-    }
+    .headline:after{
+        content: '';
+        background: var(--grey-color);
+        width: 100%;
+        height: 100%; 
+        position: absolute;
+        opacity: 50%;
+     }
+   
+    .project-info{ margin-bottom: 6rem; display: flex; justify-content: space-between; grid-column: 2 / span 4; display: grid; grid-template-columns: 1fr 2fr; flex-wrap: wrap; }
+    .project-info .desscription { color: var(--darkblue-color); }
+    .project-info .desscription p{ font-size: 1.5em; font-weight: 300; line-height: 2em;}
+    .project-info .desscription h1{ font-size: 4.5em; font-weight: 500; margin-bottom: 2rem}
+    .project-info .project-ul{ margin-top: 1rem; }
+    
+    .project-details{ display: flex; flex-wrap: wrap; justify-content: space-between; padding: 6rem 0; border-top: 1px solid var(--grey-color)}
 
-    .next-work h3{
-        font-size: 22px;
-        color: var(--darkblue-color);
-        cursor: pointer;
+    .project-ul li:nth-child(1){ font-weight: 600;  padding-bottom: 10px; font-size: 0.9em; color: var(--darkblue-color); font-size: 1em; text-transform: uppercase; }
+    .project-info ul li:nth-child(2), .project-info ul li:nth-child(2) a{ color: var(--darkblue-color); font-size: 0.9em;  }
+    .project-info ul li:nth-child(2) a { color: var(--blue-color); text-decoration: underline; font-size: 1em ; font-weight: 600;}
+    .portfolio-grid{ grid-column: 2 / span 4; }
+    .portfolio-grid .img-box{ margin: 1.5rem 0; }
 
-    }
+    .next-work{ text-align: center; padding: 5rem 0; display: flex; flex-direction: column; }
+    .next-work h3{ display: inline-block; font-size: 3em; color: var(--darkblue-color); cursor: pointer; margin: 2rem 0; transition: all .6s ease-in-out;}
+    .next-work h3:hover{ color: var(--grey-color)}
+    .next-work h3 i {  margin-right: 20px;}
+
+    .section-text{ grid-column: 1 / span 6; display: grid; padding: 15rem 0;  }
+    .section-text div{ padding: 0 6rem}
+    .section-text div p{color: var(--darkblue-color);  font-size: 1.5em; font-weight: 400; margin: 0; }
+
+     @media (max-width: 768px){
+         main{ padding-top: 4rem;}
+        .headline .section-title a { grid-column: 2 / span 4;}
+       
+       .project-info .project-ul{ display: none;}
+        .project-info .desscription h1{ font-size: 2.5em;}
+        .project-info .desscription p{ font-size: 1.2em;}
+        .project-info { display: block ; margin-bottom: 2rem}
+       
+       .project-details{ padding: 3rem 0 0}
+       
+       .project-ul { width: 100%; margin-bottom: 2rem}
+       
+       .section-text { padding: 4rem 0; }
+        .section-text p{  font-size: 1.2em; }
+        .portfolio-grid{ grid-column: 1/span 6 }
+        
+        .section-text{ grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr; display: grid;}
+        .section-text div{ grid-column: 2 / span 4; padding: 0;}
+        .next-work h3{ font-size: 1.2em; margin: 0}
+     }
     
 </style>

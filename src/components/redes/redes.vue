@@ -3,7 +3,7 @@
         <div class="redes">
             <ul>
                 <li>
-                    <a ref="box" href="" target="_blank">
+                    <a ref="box" href="https://www.instagram.com/francocagliolo/?hl=es-la" target="_blank">
                         <font-awesome-icon
                             class=" redes-icon"
                             :icon="['fab', 'instagram']" 
@@ -14,7 +14,7 @@
                 </li>
 
                 <li>
-                    <a ref="box" href="" target="_blank">
+                    <a ref="box" href="https://www.linkedin.com/in/franco-cagliolo-5534b0139/" target="_blank">
                         <font-awesome-icon 
                             class=" redes-icon"
                             :icon="['fab', 'linkedin']"
@@ -25,7 +25,7 @@
                 </li>
 
                 <li>
-                    <a ref="box" href="" target="_blank">
+                    <a ref="box" href="https://www.behance.net/francocgl" target="_blank">
                         <font-awesome-icon 
                             class=" redes-icon"
                             :icon="['fab', 'behance']"

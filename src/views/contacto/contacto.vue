@@ -1,53 +1,62 @@
 <template>
     <div>
-        <Header :passingRouter="true"/>
+        <Header :passingRouter="true" :passingPage="'contacto'" />
 
         <Redes />
        
-
-        <section  id="contact-section">
-            
-            <div class="contact-content-asdasdasda">
-                
-            <div class="section-title">
-                <h2 class="animate-input">Trabajemos juntos</h2>
-                <h1 class="animate-input">Contacto</h1>
-            </div>
-        <div class="contact-form">
-
-            <div class="contact-info">
     
-                <ul class="info-container-contacto">
+        <main  class="main">
+            
                 
-                    <li>LOCACI&Oacute;N</li>
+            <section class="section-title">
+                <h2 class="animate-input animate-header">Trabajemos juntos</h2>
+                <h1 class="animate-input animate-header">Contacto</h1>
+            </section>
+
+            <section class="contact-form">
+
+                    <div class="contact-info">
+                        <div class="contact-details">
+
+                            <ul class="info-container-contacto">
+                            
+                                <li class="animate-li">LOCACI&Oacute;N</li>
+                            
+                                <li class="animate-li">Debenedetti 532<br> Lucila, Buenos Aires, Argentina</li>
+                            
+                            </ul>
+                            
+                            <ul class="info-container-contacto">
+                            
+                                <li class="animate-li">TEL&Eacute;FONO</li>
+                            
+                                <li class="animate-li">+54 11 3005 7335</li>
+                            
+                            </ul>
+                            
+                            <ul class="info-container-contacto">
+                            
+                                <li class="animate-li">EMAIL</li>
+                            
+                                <li class="animate-li">franco@martin.com.ar</li>
+                            
+                            </ul>
+                        </div>
+
+                        <div class="animate-li link-container">
+                            <a href="mailto:cagliolo@gmail.com" class="link-mail ">Hablemos Por Acá <i class="icon-arrow-big"></i></a>
+                        </div>
                 
-                    <li>Debenedetti <br> Lucila, Buenos Aires, Argentina</li>
-                
-                </ul>
-                
-                <ul class="info-container-contacto">
-                
-                    <li>TEL&Eacute;FONO</li>
-                
-                    <li>+54 11 3005 7335</li>
-                
-                </ul>
-                
-                <ul class="info-container-contacto">
-                
-                    <li>EMAIL</li>
-                
-                    <li>franco@martin.com.ar</li>
-                
-                </ul>
-        
-            </div>
-            <div>
-                  <img src="@/assets/mapa-bue.svg" alt="logo de marca" id="logo"> 
-            </div>
-    </div>
-           
-             </div>
+                    </div>
+
+                    <!-- <div class="img-box animate-li">
+                        <img src="@/assets/mapa-bue.svg" alt="logo de marca" id="logo"> 
+                    </div> -->
+            </section>
+        </main>
+        <section class="map-section animate-li">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.2286613717206!2d-58.48919168469119!3d-34.49708685937106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb10d4160b43f%3A0x933318baab397e27!2sDebenedetti%20532%2C%20B1637BCH%20La%20Lucila%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1614620275755!5m2!1ses!2sar"
+             width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </section>
 
         <Footer />
@@ -58,34 +67,44 @@
   
     import { Footer, Header, Redes } from '@/components';
     
+    import $ from 'jquery'; 
 
-/*     import {  TimelineLite } from 'gsap';
-
-    import $ from 'jquery'; */
+    import {  TimelineLite } from 'gsap';
+ 
 
 export default {
     components:{
         Footer,
         Header,
         Redes
-    }
+    },
+
+    mounted(){
+        const t1 = new TimelineLite();
+            t1.from( $('.animate-header'),1, {
+                opacity: 0,
+                stagger: 0.2,
+                y: -50})
+
+            t1.from( $('.animate-li'),0.6, {
+                opacity: 0,
+                stagger: 0.2,
+                y: -50})
+            
+             t1.from( $('.services-item'),0.8, {
+                opacity: 0,
+                stagger: 0.2,
+                x: 100})
+      }
 }
 </script>
 
 <style lang="scss" scoped>
- 
-    #contact-section{
-        display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr  1fr;
-        grid-template-rows: 100px  1fr;
-    }
 
-    .section-title{
-        grid-row: 2;
-        grid-column: 2 / span 2;
-        align-self: center;
-        margin: 0;
-    }
+
+ 
+    .contact-form { display: flex; justify-content: space-between; grid-column: 2 / span 4; }
+    .contact-form .img-box {width: 400px;}
     .section-title h1{
         color: var(--darkblue-color);
     }
@@ -94,6 +113,10 @@ export default {
     #formContact{
         padding-top: 20px;
     }
+
+    .contact-info { display: flex; justify-content: space-between; flex-direction: column; width: 100% ;}
+
+    .contact-details { display: flex; justify-content: space-between; flex-wrap: wrap;}
     .info-container{
         margin: 30px 0;
     }
@@ -107,144 +130,41 @@ export default {
     }
     .info-container li:nth-child(2){
         color: var(--darkblue-color);
-        font-size: 1em;
-    }
-    .form-control{
-        background: transparent;
-        color: var(--grey-color);
-        border: solid 1.2px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-radius: 0px;
-        padding: 10px ;
-    }
-    .form-control::placeholder{
-        color: var(--darkblue-color);
-        font-size: 1em;
-    }
-    
-    .form-control:focus{
-        box-shadow: none;
-        background-color: transparent;
-    }
-
-    .form-area{
-        border: 1px solid var(--grey-color);
-        margin-top: 20px;
-    }
-
-
-    .btn-submit:hover{
-        background: var(--grey-color);
-        color: white
-        
-    } 
-    #contact-section{
-        display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr  1fr;
-        grid-template-rows: 100px  1fr;
-    }
-
-    .section-title{
-        grid-row: 2;
-        grid-column: 2 / span 2;
-        align-self: center;
-        margin-top: 20px;
-    }
-
-
-    .contact-content-asdasdasda{
-        grid-row: 2;
-        grid-column: 2 / span 4;
+        font-size: 1.5em;
     }
    
-    .contact-form{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-         grid-column: 4 / span 2;
-         align-self: center;
-    }
- 
-    .contact-info{
-        grid-column: 1 / span 1;
-        align-self: baseline;
-   
-       
-    }
-    #formContact{
-        padding-top: 20px;
-    }
     .info-container-contacto{
         margin: 30px 0;
     }
     .info-container-contacto li:nth-child(1){
         text-transform: uppercase;
         font-weight: 600;
-        padding-bottom: 10px;
         font-size: 0.9em;
         letter-spacing: 2px;
         color: var(--grey-color);
     }
     .info-container-contacto li:nth-child(2){
         color: var(--darkblue-color);
-        font-size: 1em;
+        font-size: 1.5em;
     }
-    .form-control{
-        background: transparent;
-        color: var(--grey-color);
-        border: solid 1.2px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-radius: 0px;
-        padding: 10px ;
-    }
-    .form-control::placeholder{
+
+    .link-container{ margin: 4rem  0;}
+    .link-mail{
         color: var(--darkblue-color);
-        font-size: 1em;
+        font-size: 3em;
+        font-weight: 400;
+        border-bottom: 1px solid ;
+        transition: all .6s ease-in-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    
-    .form-control:focus{
-        box-shadow: none;
-        background-color: transparent;
-    }
-
-    .form-area{
-        border: 1px solid var(--grey-color);
-        margin-top: 20px;
-    }
-    .btn-submit{
-        background: var(--blue-color);
-        color: #fff;
-        text-transform: uppercase;
-        font-weight: 600;
-        font-size: 0.9em;
-        border-radius: 0;
-        transition: all 600ms ease-in-out;
-    }
-
-    .btn-submit:hover{
-        background: var(--grey-color);
-        color: white
-        
-    }
+    .link-mail:hover{ color: var(--gold-color);}
+    .map-section { background: var(--darkblue-color); }
     @media (max-width: 758px) {
 
-        #contact-section{
-            grid-template-rows: 100px 1fr;
-        }
-        .contact-form, .contact-info{
-            grid-column: 2 / span 5;
-        }
-
-        #formContact {
-            padding-top: 20px;
-            grid-column: 1 / span 3;
-        } 
-        
+        .contact-form,  .contact-info{ flex-direction: column;}
         .contact-info{
-            grid-column: 1 / span 3;
             padding: 0;
             display: flex;
             justify-content: space-between;
@@ -252,23 +172,15 @@ export default {
             flex-wrap: wrap;
             
          }
-         .info-container-contacto li:nth-child(1){
-             font-size: 14px;
-         }
+
+        .link-mail{ font-size: 1.5em;   display: block;}
+         .info-container-contacto{ margin: 15px 0;}
+      
          .info-container-contacto li:nth-child(2){
-             font-size: 12px;
+             font-size: 1.2em;
          }
+         .contact-form .img-box { width: 100%;}
   
     }
-    @media (max-width: 758px) {
-
-        #contact-section{
-            grid-template-rows: 100px 1fr;
-        }
-        .contact-form, .contact-info{
-            grid-column: 2 / span 5;
-        }
-
-  
-    }
+ 
 </style>
