@@ -1,23 +1,17 @@
 import Vue from 'vue';
-
 import App from './App.vue';
-
-import BootstrapVue from 'bootstrap-vue';
-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
 import router from '@/router';
-
-import '@/styles/main.scss';
-
 import store from '@/store';
-
 import global_mixin from '@/mixins';
-
-import 'bootstrap/dist/css/bootstrap.css'
-
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 import CSSPlugin from 'gsap/CSSPlugin';
+
+//styles
+import '@/styles/main.scss';
+//bootstrap
+import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.mixin(global_mixin); 
 

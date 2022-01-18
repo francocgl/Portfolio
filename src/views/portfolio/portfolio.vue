@@ -1,66 +1,53 @@
 <template>
     <div>
-        
         <Header :passingRouter="true" :passingPage="'portfolio'" />
-        
         <Redes />
-
         <main class="main">
            <section>
-                    <div class="section-title">
-                        <h2 class="animate-header">Trabajos y Proyectos</h2>
-                        <h1 class="animate-header">Portfolio </h1>
-                    </div>
-
+                <div class="section-title">
+                    <h2 class="animate-header">Trabajos y Proyectos</h2>
+                    <h1 class="animate-header">Portfolio </h1>
+                </div>
            </section>
-
             <section class="portfolio-grid ">
-                <div class="portfolio">
-
+                <div 
+                    class="portfolio"
+                    v-bind:style="{
+                             gridTemplateRows: 'repeat('+ posts.length*2 +', minmax(100px, 1fr))'
+                        }"
+                >
                     <div 
-                        v-for="(post, index) in posts" :key="index"
+                        v-for="(post, index) in posts" :key="post.id"
                         :class="{
                             'item': true,
                             'tall': (index / 2 == 0 )? false : true,
                             'medium': (index / 2 == 0 || index == 0 )? true : false
                         }"
-                        >
-                        
-                            <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:post.id} }" >
-                            <!-- <router-link :to=" { path: '/portfolio/' + post.id }" > -->
-                                    <!-- <img v-bind:src="'/assets/portfolio/' + post.img_principal" class="portfolio-img" /> -->
+                    >
+                        <router-link  active-class="active" :to=" { name: 'ver-portfolio', params: { id:post.id} }" >
+                                <div class="img" v-bind:style="{backgroundImage:'url(' + url + post.attributes.img.data.attributes.url +')'}">
+                                <div class="overlay-img">
+                                    <div class="img-title">
+                                        <h2>{{post.attributes.title}}</h2>
+                                        <h3>{{post.attributes.category}}</h3>
 
-                                    <div class="img" v-bind:style="{backgroundImage:'url(assets/portfolio/'+ post.img_principal +')'}">
-                                    <div class="overlay-img">
-                                        <div class="img-title">
-                                            <h2>{{post.title}}</h2>
-                                            <h3>{{post.category}}</h3>
-
-                                        </div>
                                     </div>
-
                                 </div>
-                            </router-link>
+                            </div>
+                        </router-link>
                     </div>
-                
-                  
-
                 </div>
             </section>  
-
         </main>
-   
         <Footer />
     </div>
 </template>
 
 <script>
-    
     import { Footer, Header, Redes } from '@/components';
-
     import $ from 'jquery';
-
     import {  TimelineLite } from 'gsap';
+    import { API_URL } from '../../config'
 
 export default {
    
@@ -69,13 +56,16 @@ export default {
         Header,
         Redes
     },
+     data(){
+         return{
+             url : API_URL
+         }
+    },
     computed: {
-        posts(){
-            return this.$store.state.posts
-        }
+        posts(){ return this.$store.state.posts}
     },
     mounted(){
-       /*  this.$store.dispatch('loadPosts'); */
+        this.$store.dispatch('getPosts'); 
 
         const t1 = new TimelineLite();
 

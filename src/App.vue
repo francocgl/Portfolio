@@ -10,14 +10,7 @@
 <script>
 
 export default {
-  name: 'app',
-  components: {
- 
-  },
-  methods:{
-     
-
-  }
+  name: 'app'
 }
 </script>
 

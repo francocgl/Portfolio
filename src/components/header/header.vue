@@ -1,7 +1,6 @@
 <template>
     <div>
         <header class="nav-header" id="navHeader" >
-
             <div  class="logo-container">
                 <router-link :to=" { path: '/' }" class="logo">
                     <img src="@/assets/logo.svg" alt="logo de marca" id="logo" 

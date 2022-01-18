@@ -1,46 +1,20 @@
 <template>
     <div>
         <Header :passingRouter="false" />
-        
         <section class="home-section">
-           
              <div class="project-preview-wrapper" >
-                
                 <nav class="nav-wrapper">
-                    
                     <ul class="nav-list" >
-                        
                         <li 
                             :class="{
-                               
                                 'nav-item nav-item-1': true,
                                 'active-modal': (modal == 1) ? true : false
                             }"
                         >
-                                <a  
-                                    v-on:mouseenter="openWrapper(1)"
-                                >
+                            <a v-on:mouseenter="openWrapper(1)" >
                                  <router-link  to="/acerca" > <span data-text="Acerca">Acerca</span> </router-link>
                             </a>
                         </li>
-            
-                        <li  
-                            :class="{
-                                'nav-item nav-item-2': true,
-                                'active-modal': (modal == 2) ? true : false
-                            }"
-                        >
-                            <a   
-
-                                href="servicios"
-                                v-on:mouseenter="openWrapper(2)"
-                            >
-
-                                <router-link  to="/servicios" >  <span data-text="Servicios"> Servicios</span></router-link>
-
-                            </a>
-                        </li>
-            
                         <li 
                              :class="{
                                 'nav-item nav-item-3': true,
@@ -79,20 +53,6 @@
                     <transition name="slide">
                     
                         <div class="wrapper" v-if="wrapper == true">
-                          <!--   <div class="closing-animation ">
-                                
-                                <div class="section-number ">
-                                
-                                    0{{this.modal}}
-                                
-                                </div>
-
-                                <div class="menu-times " @click="closeWrapper()">
-                                    
-                                    <span class="times" ></span>
-                                
-                                </div>
-                            </div> -->
                             <div class="wrapper-content">
 
                                 <About v-if="modal == 1"/>
@@ -158,13 +118,12 @@ import $ from 'jquery';
 
 import {  TimelineLite, Expo } from 'gsap';
 
-
+// Views
 import {  Header } from '@/components';
 import  About  from '@/views/home/about';
 import  Portfolio  from '@/views/home/portfolio';
-import  Services  from '@/views/home/services';
 import  Contact  from '@/views/home/contact';
-
+// Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
@@ -177,8 +136,7 @@ export default {
         Header,
         About,
         Contact,
-        Services,
-        Portfolio,
+        Portfolio
     },
     data(){
         return{
@@ -232,19 +190,9 @@ export default {
                 ease: Expo.easeInOut
             });
 
-           /*  var t2 = new TimelineLite();
-             t2.from( $('.nav-item '), 1, {
-                width: 0,
-            }).to( $('.nav-item'), 1, {
-                width: 100
-            }); */
-
-            
             if(this.wrapper == false){
-                
                 this.wrapper= true;
             }
-                    
             return  this.modal = value;
 
         },
@@ -278,15 +226,10 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
-
-  
     .home-section{ 
-        
         background: url('./assets/rombos-bg.png') no-repeat -10% -10%;
-        
         background-size: 40%; 
         background-attachment: cover; 
-        
         padding: 0;
     }
      

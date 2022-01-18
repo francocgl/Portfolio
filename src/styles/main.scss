@@ -1,10 +1,4 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
-
-
-
-
 
 *{
     font-family: 'Montserrat', sans-serif;
@@ -30,94 +24,70 @@ a:hover{
     --gold-color : #AB9F71;
 }
 
-// 
-.main{ display: grid; grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr; align-items: center; grid-template-rows: auto 1fr; padding-top: 140px; margin-bottom: 4rem }
-section{ position: relative; grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
-    grid-template-rows: auto 2fr;
-    grid-column: 2 / span 4; }
+.main{ display: grid; grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr; align-items: center; grid-template-rows: auto 1fr; padding-top: 140px; margin-bottom: 4rem; max-width: 1480px; margin: auto; }
 
-.section-title{
+// Sections --------------------------
+section{
+  position: relative;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+  grid-template-rows: auto 2fr;
+  grid-column: 2 / span 4;
+ }
+ section .section-title{
     margin: 0 0 20px;
 }
-.section-title h1{
-    
-    font-weight: 800;
-    
-    font-size: 55px;
-    
-    color:  var(--darkblue-color);
+section .section-title h1{
+  font-weight: 800;
+  font-size: 55px;
+  color:  var(--darkblue-color);
 }
 
-.section-title h2{
-    
-    color: var(--gold-color);
-    
-    font-size: 15px;
-    
-    letter-spacing: 1px;
-    
-   font-weight: 600;
-    
-    text-transform: uppercase;
+section .section-title h2{
+  color: var(--gold-color);
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
-
-.section-number{
-    
+section .section-number{
     font-weight: 800;
-    
     font-size: 2.5em;
-    
     color: var(--grey-color);
-    
     align-self: end;
-    
     justify-self: end;
-    
     animation: trans 1s ease-in-out;
-    
 }
-
 .closing-animation{
     animation: trans 1s ease-in-out;
     top: 5px;
 }
-
 p{
-    line-height: 40px;
-   
-    font-size: 16px;
+  line-height: 40px;
+  font-size: 16px;
 }
 
+// Buttons --------------------------
 .button, .button-home{
-    
-    text-align: center;
-    color: #fff;
-
-    background: var(--gold-color);
-    
-    padding: 10px 12px;
-    
-    text-transform: uppercase;
-    
-    font-weight: 600;
-    
-    font-size: 13px;
-    
-    display: inline-block;
-
-    transition: all 600ms ease-in-out;
-    
-    min-width: 200px;
-
-    font-size: 0.9em;
-    
+  text-align: center;
+  color: white;
+  background: transparent;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  border: 1px solid;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+  transition: all 600ms ease-in-out;
+  min-width: 200px;
+  font-size: 0.9em;
 }
 
 .button-home{ width: 200px; justify-content: center; display: flex; align-items: center;}
 .button-home i{font-size: 2em; padding-left: 1rem}
 
+// Images --------------------------
 .img-box { overflow: hidden;}
-.img-box img{ height: 100%; width: 100%; object-fit: contain; object-position: center; }
+.img-box img, .img-box video{ height: 100%; width: 100%; object-fit: cover; object-position: center center; }
 
 
 .button:hover, .button-home:hover {
@@ -127,27 +97,19 @@ p{
 @media (max-width: 768px){
     .main{ padding-top: 100px}
 
-    .section-number{
-         font-size: 2.5em;
-    }
-
-    p{
-        font-size: 14px;
-    }
-    .section-title h1{
-          font-size: 35px;
-    }
-
-     .section-title h2{
-           font-size: 14px;
-    }
-    .section-title p{
-        font-size: 0.9em;
-    }
+    
+    p{ font-size: 14px; }
+    
+    //Sections --------------------------
+    .section-number{ font-size: 2.5em; }
+    .section-title h1{ font-size: 35px; }
+    .section-title h2{ font-size: 14px; }
+    .section-title p{ font-size: 0.9em; }
+    
     .button-home i{ display: none;}
 }
 
-
+// Animations --------------------------
 @keyframes trans{
     0%{
         transform: translateY(-100px);
@@ -159,8 +121,20 @@ p{
     }
 }
 
+@keyframes overlay{
+  0%{
+      transform: translateY(-100%);
+  }
+  50%{
+    transform: translateY(50%);
+  }
+  100%{
+      transform: translateY(100%);
+      opacity: 1;
+  }
+}
 
-// icomoon
+// Icons --------------------------
 @font-face {
     font-family: 'icomoon';
     src:  url('fonts/icomoon.eot?kcpm9l');
@@ -200,7 +174,9 @@ p{
   .icon-arrow-left-small-short:before {
     content: "\e914";
   }
-
+  .icon-play:before {
+    content: "\e909";
+  }
   .icon-eho:before {
     content: "\e913";
   }

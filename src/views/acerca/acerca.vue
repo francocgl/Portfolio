@@ -10,14 +10,30 @@
             </section>
             
             <section  class="description-container">
-                <div class="img-box">
-                    <!-- <img src="assets/about.jpg" alt=""> -->
-                </div>
                 <div class="about-text">
                     <!-- <h2>Diseñador</h2> -->
                     <p ref="box" class="description animate">Me llamo Franco Martín Cagliolo, tengo <span class="bold">26 años</span> y vivo en La Lucila, Argentina. <br> Tengo más de <span class="bold">6 años de experiencia</span> en el desarrollo web y la implementacón UX/UI de sitios dinámicos. <br> Estoy cursando el último año de la carrera de Diseño Gráfico en la FADU y al mismo tiempo sigo trabajando en distintos proyectos para empresas tecnológicas.  </p>
                 </div>
             </section>
+            <section class="list-container">
+                <div class="services-grid">
+                    <div class="services-item">
+                        <img src="assets/servicios/uxui.svg" alt="" class="service-icon">
+                        <h2>Diseño UX/ UI</h2>
+                        <p>Creación de experiencias de usuario para una clara y simple navegación en la web.</p>
+                    </div>
+                    <div class="services-item" >
+                        <img src="assets/servicios/web.svg" alt="" class="service-icon">
+                        <h2>Desarrollo Web</h2>
+                        <p>Desarrollo tanto Back como Front End para crear webs dinámicas y adaptables a distintos dispositivos.</p>
+                    </div>
+                    <div class="services-item" >
+                        <img src="assets/servicios/branding.svg" alt="" class="service-icon">
+                        <h2>Branding</h2>
+                        <p>Desarrollo de marca e identidad para sobresalir en el mercado a través del diseño.</p>
+                    </div>
+                  </div>
+            </section>  
             <section class="aptitudes">
 
                 <div class="aptitudes-box" style="border-top:1px solid var(--gold-color)">
@@ -61,7 +77,7 @@
                     <ul>
                         <li>Diseño Grafico</li>
                         <li>Diseño Web</li>
-                        </ul> 
+                    </ul> 
                 </div>
                 
             </section>
@@ -75,9 +91,7 @@
 
 <script>
 import {Footer, ProgressBar, Header, Redes} from '@/components'
-
 import {  TimelineLite } from 'gsap';
-
 import $ from 'jquery';
 
 
@@ -89,20 +103,22 @@ export default {
         Redes
     },   
     mounted(){
-        
-         var t1 = new TimelineLite();
+        var t1 = new TimelineLite();
 
         t1.from( $('.animate'),0.6, {
             opacity: 0,
             stagger: 0.3,
             y: -50
         });
-
-       
         t1.from( $('.description-item-1'),0.6, {
             opacity: 0,
             x: 200
         });
+
+         t1.from( $('.services-item'),0.6, {
+                opacity: 0,
+                stagger: 0.2,
+                x: 100})
 
     }
     
@@ -113,12 +129,8 @@ export default {
 <style lang="scss" scoped>
 
     
-    .section-title{
-        grid-column: 1 / span 2 ;
-    }
-    .section-title h1{
-        color: var(--darkblue-color);
-    }
+    .section-title{ grid-column: 1 / span 2 ;}
+    .section-title h1{ color: var(--darkblue-color); }
 
     .description-container{
        align-items: center;
@@ -126,8 +138,6 @@ export default {
        display: grid;
        grid-template-columns: 1fr 1fr 2fr;
     }
-
-    // .img-box{ grid-column: 1 / span 2;}
 
     .about-text{ padding: 4rem 0;  grid-column: 1 / span 3;}
     .about-text p{ line-height: 40px; color:var(--darkblue-color); font-size: 3em; line-height: 1.4em; font-weight: 300;}
@@ -140,10 +150,48 @@ export default {
     .aptitudes .aptitudes-box ul {width: 50%; display: flex; justify-content: space-between; flex-wrap: wrap;}
     .aptitudes .aptitudes-box ul li{width: 50%; display: flex; line-height: 2em; font-size: 1.2em; color: var(--darkblue-color); font-weight: 500;}
     
+
+    
+    .list-container{
+        display: flex;
+        justify-content: space-between;
+        grid-column: 1 / span 6;
+         display: grid;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+        background: var(--darkblue-color);
+        margin: 6rem 0;
+        padding: 5rem 0;
+    }
+    .list-container .services-grid{
+        display: grid;
+        grid-column: 2 / span 4;
+        grid-template-columns: repeat(3, 1fr);
+        align-self: center;
+        margin: 40px 0 ;
+        grid-gap: 20px;
+    }
+    .list-container .services-grid .services-item{
+         padding: 20px 15px;
+        text-align: center;
+
+     }
+    .list-container .services-grid .services-item h2{
+         color: #fff;
+         font-weight: 600;
+         font-size: 24px;
+     }
+    .list-container .services-grid .services-item p{
+        color: var(--grey-color);
+        font-size: 16px;
+        line-height: 35px;
+
+     }
+     .list-container .services-grid .service-icon{
+        height: 70px;
+        margin: 20px 0 30px;
+    }
     @media (max-width: 768px){  
-        .description-container{
-            grid-column: 2 / span 4;
-        }
+        .description-container{ grid-column: 2 / span 4;}
          .about-text p { font-size: 1.4em; line-height: 1.7em;}
         .section-title{
             grid-row: 2;

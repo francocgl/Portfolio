@@ -1,18 +1,13 @@
 import Vue from "vue";
-
 import VueRouter from "vue-router";
-
-/* import store from './store'; */
-
-import { Home, verPortfolio, Error, Portfolio, Contacto, Servicios, Acerca } from '@/views';
-
+import store from "./store";
+import { Home, verPortfolio, Error, Portfolio, Contacto, Acerca, Login, LoginDashboard } from '@/views';
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
     mode: "history",
     scrollBehavior() {
-
         return {x: 0, y: 0}
     },
     routes: [
@@ -79,41 +74,16 @@ export default new VueRouter({
             name: "acerca",
             component: Acerca,
             beforeEnter(to, from, next) {
-
-
                 Promise.all([
                     window.scrollTo(0, 0)
-
                 ])
-                    .then(async () => {
-                        next();
-                    })
-                    .catch(e => {
-                        next(false);
-
-                        throw e;
-                    });
-            }
-        },
-        {
-            path: "/servicios",
-            name: "servicios",
-            component: Servicios,
-            beforeEnter(to, from, next) {
-
-
-                Promise.all([
-                    window.scrollTo(0, 0)
-
-                ])
-                    .then(async () => {
-                        next();
-                    })
-                    .catch(e => {
-                        next(false);
-
-                        throw e;
-                    });
+                .then(async () => {
+                    next();
+                })
+                .catch(e => {
+                    next(false);
+                    throw e;
+                });
             }
         },
         {
@@ -127,13 +97,30 @@ export default new VueRouter({
                 ])
                 .then(async () => {
                       
-                        next();
-                    })
-                    .catch(e => {
-                        next(false);
+                    next();
+                })
+                .catch(e => {
+                    next(false);
 
-                        throw e;
-                    });
+                    throw e;
+                });
+            }
+        },
+        {
+            path: "/admin",
+            name: "login",
+            component: Login
+        },
+        {
+            path: "/dashboard",
+            name: "dashboard",
+            component: LoginDashboard,
+            beforeEnter(to, from, next) {
+              if(store.getters['isLoggedIn']){
+                  next();
+              }else{
+                  next('/login');
+              }
             }
         },
         {
@@ -154,6 +141,8 @@ function castRouteParams(route) {
         id: Number(route.params.id),
     };
 }
+
+
 
 
 

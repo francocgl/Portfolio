@@ -1,32 +1,15 @@
 <template>
   <div>
-     
-        <NavWrapper />
-
-
+    <NavWrapper />
   </div>
 </template>
 
 <script>
-    
-    import NavWrapper from './nav-wrapper'
-
-    import $ from 'jquery';
-
-    import {  TimelineLite } from 'gsap';
+import NavWrapper from './nav-wrapper'
 
 export default {
     components:{
         NavWrapper,
-    
-    },
-    created(){
-        var t1 = new TimelineLite();
-
-        t1.from( $('#services-section'),1.5, {
-            opacity: 0,
-                x: 50
-        });
     }
 }
 </script>

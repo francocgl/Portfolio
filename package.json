@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.3",
+    "custom-env": "^2.0.1",
     "gsap": "^3.2.6",
     "jquery": "^3.5.0",
     "json-form-data": "^1.7.2",
@@ -45,7 +46,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

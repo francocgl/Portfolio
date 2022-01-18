@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 import $ from 'jquery'
 
 export default {
@@ -38,11 +37,9 @@ $(window).scroll( function (){
         background: chocolate;
         z-index: 2;
     }
-
-     @media (max-width: 768px){
+    @media (max-width: 768px){
         .progressbar, .progressbar-2{
             display: none;
-         
         }
     }
 </style>

@@ -6,6 +6,4 @@ import ProgressBar from './progressbar';
 
 import Header from './header';
 
-import Pointer from './pointer';
-
-export { Footer, Redes, ProgressBar, Header, Pointer }  ;
+export { Footer, Redes, ProgressBar, Header }  ;

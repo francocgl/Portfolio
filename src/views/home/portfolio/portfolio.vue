@@ -1,37 +1,28 @@
 <template>
     <div>
         <section id="portfolio-section">
-           
             <div class="portfolio-grid ">
                 <div class="portfolio">
                     <div class="section-title  medium  ">
-            
                         <h2 class="animate-header">Diseño</h2>
                         <h1 class="animate-header">Trabajos y Proyectos </h1>
                         <p class="animate-header">Entrá a ver todos mis trabajos freelance, proyectos y diseños personales.</p>
-                         
                     </div>
-
                     <div class="animate-header">
                           <router-link to="/portfolio" class="button-home  button-portfolio"> Ver todos
                             <i class="icon-arrow-small-short"></i>
                         </router-link>
                     </div>
-
-                  
-
                 </div>
             </div>  
-
         </section>
     </div>
 </template>
 
 <script>
-    
-    import $ from 'jquery';
 
-    import {  TimelineLite } from 'gsap';
+import $ from 'jquery';
+import {  TimelineLite } from 'gsap';
 
 export default {
     data(){
@@ -40,20 +31,18 @@ export default {
         }
     },
     computed: {
-        posts(){
-            return this.$store.state.posts
-        },
-         proyectsToDisplay: function() {
-            if (this.showLessproyects) {
-                return this.posts.slice(0, 3);
-            } else {
-                return this.posts;
-            }
-        }
+        // posts(){
+        //     return this.$store.state.posts.attributes
+        // },
+        //  proyectsToDisplay: function() {
+        //     if (this.showLessproyects) {
+        //         return this.posts.slice(0, 3);
+        //     } else {
+        //         return this.posts;
+        //     }
+        // }
     },
     mounted(){
-        this.$store.dispatch('loadPosts');
-
         const t1 = new TimelineLite();
 
         t1.from( $('.animate-header'),0.6, {
@@ -95,13 +84,6 @@ export default {
         align-self: center;
 }
 
- /*    .portfolio{
-        display: grid;
-        grid-template-columns: repeat(6, minmax(50px, 1fr));
-        grid-template-rows: repeat(6, minmax(50px, 1fr));
-        grid-gap: 20px;
-        width: 100%;
-    } */
     .medium{
         grid-column: span 4;
         grid-row: span 2;

@@ -1,127 +1,80 @@
 <template style="overflow:hidden">
     <div class="fixedMenu" >
-            
         <header class="nav-header animateNav">
-                
-                <router-link to="/" @click="onClose(0)" class="logo-container" >
-                    <img src="@/assets/logo-white.svg" alt="logo de marca" id="logo"> 
-                </router-link>
-        
-                <div class="menu-times" @click="onClose(0)">
-                    <span class="times" ></span>
-                
-                </div>
-           
+            <router-link to="/" @click="onClose(0)" class="logo-container" >
+                <img src="@/assets/logo-white.svg" alt="logo de marca" id="logo"> 
+            </router-link>
+            <div class="menu-times" @click="onClose(0)">
+                <span class="times" ></span>
+            </div>
         </header>
-
         <div class="content-menu">
-            
             <div class="nav-wrapper nav-wrapper-mobile">
-
                 <ul class="nav-list"  v-if="!router">
-                    
                     <li class="nav-item nav-item-1 nav-item-animate">
                         <a   @click="onClose(1)">
                              <router-link  to="/acerca"   > <span data-text="Acerca">Acerca</span></router-link>
                         </a>
                     </li>
-        
-                    <li class="nav-item nav-item-2 nav-item-animate"  >
-                        <a   @click="onClose(2)">
-                              <router-link  to="/servicios"><span data-text="Servicios" > Servicios</span></router-link>
-                        </a>
-                    </li>
-        
                     <li class="nav-item nav-item-3 nav-item-animate">
                         <a    @click="onClose(3)">
                             <router-link   to="/portfolio"><span data-text="Portfolio">Portfolio</span></router-link>
                         </a>
                     </li>
-
                     <li class="nav-item nav-item-4 nav-item-animate">
                         <a   @click="onClose(4)">
-
                             <router-link   to="/contacto"><span data-text="Contacto">Contacto</span></router-link >
                         </a>
                     </li>
-        
                 </ul>
                
                <!-- ROUTER -->
-                
                 <ul class="nav-list" v-if="router">
-                    
                     <li class="nav-item nav-item-animate nav-item-1 ">
                         <router-link  to="/acerca"   > <span data-text="Acerca" :class=" {'active' : (page == 'acerca') ? true : false} ">Acerca</span></router-link>
                     </li>
-        
-                    <li class="nav-item nav-item-animate nav-item-2"  >
-                        <router-link  to="/servicios"><span data-text="Servicios" :class=" {'active' : (page == 'servicios') ? true : false} " > Servicios</span></router-link>
-                    </li>
-        
                     <li class="nav-item nav-item-animate nav-item-3">
                         <router-link   to="/portfolio"><span data-text="Portfolio" :class=" {'active' : (page == 'portfolio') ? true : false}">Portfolio</span></router-link>
                     </li>
-
                     <li class="nav-item nav-item-animate nav-item-4">
                         <router-link   to="/contacto"><span data-text="Contacto" :class=" {'active' : (page == 'contacto') ? true : false} ">Contacto</span></router-link >
                     </li>
-        
                 </ul>
-
-              
                     <ul class="redes nav-item-animate">
                         <li>
                             <a ref="box" href="https://www.instagram.com/francocagliolo/?hl=es-la" target="_blank">
-                                <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'instagram']"  /> -->
                                 Instagram
                             </a>
                         </li>
-
                         <li>
                             <a ref="box" href="https://www.linkedin.com/in/franco-cagliolo-5534b0139/" target="_blank">
-                            <!--  <font-awesome-icon class=" redes-icon" :icon="['fab', 'linkedin']" /> -->
                                 Linkedin
                             </a>
                         </li>
 
                         <li>
                             <a ref="box" href="https://www.behance.net/francocgl" target="_blank">
-                                <!-- <font-awesome-icon class=" redes-icon" :icon="['fab', 'behance']" /> -->
                                 Behance
                             </a>
                         </li>
                     </ul>
             </div>
-            
             <div class=" info-contacto">
-                
                 <div>
                     <ul class="info-container">
-                    
                         <li>LOCACI&Oacute;N</li>
                         <li>Buenos Aires - Argentina</li>
-                    
                     </ul>
-                    
                     <ul class="info-container">
-                    
                         <li>TEL&Eacute;FONO</li>
                         <li>+54 11 3005 7335</li>
-                    
                     </ul>
-                    
                     <ul class="info-container">
-                    
                         <li>EMAIL</li>
-                        <li>franco@martin.com.ar</li>
-                    
+                        <li>cagliolo@gmail.com</li>
                     </ul>
-
                     <ul class="info-container">
-                    
                         <li>REDES</li>
-                    
                         <li>
                             <a href="https://www.behance.net/francocgl">
                                 <font-awesome-icon 
@@ -143,29 +96,21 @@
                                     :icon="['fab', 'instagram']" 
                                 />
                             </a>
-
                         </li>
-                    
                     </ul>
-
                 </div>
             </div>     
         </div>
-    
     </div>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core';
-   
-import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
-
-library.add(faInstagram, faLinkedin, faBehance);
-
 import $ from 'jquery';
-
 import {  TimelineLite } from 'gsap';
-
+// Icons
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faInstagram, faLinkedin, faBehance } from '@fortawesome/free-brands-svg-icons';
+library.add(faInstagram, faLinkedin, faBehance);
 
 export default {
     props:{
@@ -174,12 +119,8 @@ export default {
         page: String
     },
     mounted(){
-        
         var t1 = new TimelineLite();
         var t2 = new TimelineLite();
-       
-    
-
          t1.from( $('.info-container'),1.2, {
             opacity: 0,
             stagger: 0.2,
@@ -192,13 +133,7 @@ export default {
             stagger: 0.2,
             x: -50
         });
-
-        /* t2.from( $('.animateNav'),0.5, {
-                opacity: 0,
-                y: -100
-            }); */
-      
-                
+               
     },
     methods:{
         onClose(val){
@@ -229,8 +164,7 @@ export default {
                         
                 }, 1200);
                     
-            
-                    
+                               
             }) 
         }
     }
@@ -447,10 +381,5 @@ export default {
             color: white;
             justify-content: center;
         }
-
-     /*    .nav-item{
-            text-align: center;
-        } */
-        
     }
 </style>
