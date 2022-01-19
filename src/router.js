@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from "./store";
-import { Home, verPortfolio, Error, Portfolio, Contacto, Acerca, Login, LoginDashboard } from '@/views';
+import { Home, verPortfolio, Error, Portfolio, Contacto, Acerca } from '@/views';
 
 Vue.use(VueRouter);
 
@@ -104,23 +103,6 @@ export default new VueRouter({
 
                     throw e;
                 });
-            }
-        },
-        {
-            path: "/admin",
-            name: "login",
-            component: Login
-        },
-        {
-            path: "/dashboard",
-            name: "dashboard",
-            component: LoginDashboard,
-            beforeEnter(to, from, next) {
-              if(store.getters['isLoggedIn']){
-                  next();
-              }else{
-                  next('/login');
-              }
             }
         },
         {

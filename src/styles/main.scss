@@ -3,19 +3,12 @@
 *{
     font-family: 'Montserrat', sans-serif;
 }
-html {
-    scroll-behavior: smooth;
-   /*  cursor:none; */
-}
-li{
-    list-style: none;
-}
-ul{
-    padding: 0;
-}
-a:hover{
-    text-decoration: none !important;
-}
+// General -- --
+#app{ overflow: hidden;}
+html { scroll-behavior: smooth;}
+li{ list-style: none; }
+ul{ padding: 0; }
+a:hover{ text-decoration: none !important;}
 :root{
     --darkblue-color : #112A40; 
     --blue-color : #163A59; 
@@ -26,22 +19,25 @@ a:hover{
 
 .main{ display: grid; grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr; align-items: center; grid-template-rows: auto 1fr; padding-top: 140px; margin-bottom: 4rem; max-width: 1480px; margin: auto; }
 
-// Sections --------------------------
+// Sections 
+//////////////////////
 section{
   position: relative;
   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
   grid-template-rows: auto 2fr;
   grid-column: 2 / span 4;
  }
- section .section-title{
-    margin: 0 0 20px;
+section .section-title{
+  margin: 0 0 20px;
 }
 section .section-title h1{
-  font-weight: 800;
-  font-size: 55px;
+  font-weight: 700;
+  font-size: 3.2em;
   color:  var(--darkblue-color);
 }
-
+section .section-title h1.darkblue-title{
+  color: var(--darkblue-color);
+}
 section .section-title h2{
   color: var(--gold-color);
   font-size: 15px;
@@ -50,23 +46,57 @@ section .section-title h2{
   text-transform: uppercase;
 }
 section .section-number{
-    font-weight: 800;
-    font-size: 2.5em;
-    color: var(--grey-color);
-    align-self: end;
-    justify-self: end;
-    animation: trans 1s ease-in-out;
+  font-weight: 800;
+  font-size: 2.5em;
+  color: var(--grey-color);
+  align-self: end;
+  justify-self: end;
+  animation: trans 1s ease-in-out;
+}
+.home{
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
+  grid-template-rows: auto 1fr ;
+}
+.home .description-container{
+  grid-row-start: 2;
+  align-items: center;
+  grid-column: 2 / span 4;
+}
+.home .description-container .section-title{
+  grid-column: 1 / span 2 ;
+  justify-self: center;
+  margin: 0;
+}
+.home .description-container .section-title h1{
+  color: #fff;
+}
+.home .description-container .section-title p {
+  line-height: 40px;
+  padding-right: 20px;
+  margin-top: 20px;
+  color:#fff;
 }
 .closing-animation{
-    animation: trans 1s ease-in-out;
-    top: 5px;
+  animation: trans 1s ease-in-out;
+  top: 5px;
 }
 p{
   line-height: 40px;
   font-size: 16px;
 }
-
-// Buttons --------------------------
+@media only screen
+and (min-width : 0)
+and (max-width : 576px) {
+  section .section-title h1{
+    font-size: 1.8em;
+  }
+  section .section-title h2{
+    font-size: 1em;
+  }
+}
+// Buttons
+//////////////////////
 .button, .button-home{
   text-align: center;
   color: white;
@@ -81,35 +111,49 @@ p{
   min-width: 200px;
   font-size: 0.9em;
 }
+.button-home{
+  width: 200px; 
+  justify-content: center; 
+  display: flex; 
+  align-items: center;
+}
+.button-home i{
+  font-size: 2em; 
+  padding-left: 1rem
+}
 
-.button-home{ width: 200px; justify-content: center; display: flex; align-items: center;}
-.button-home i{font-size: 2em; padding-left: 1rem}
-
-// Images --------------------------
+// Images 
+//////////////////////
 .img-box { overflow: hidden;}
-.img-box img, .img-box video{ height: 100%; width: 100%; object-fit: cover; object-position: center center; }
+.img-box img, .img-box video{ 
+  height: 100%; 
+  width: 100%; 
+  object-fit: cover; 
+  object-position: center center; 
+}
 
 
 .button:hover, .button-home:hover {
     color: var(--darkblue-color);
 }
 
-@media (max-width: 768px){
-    .main{ padding-top: 100px}
 
-    
-    p{ font-size: 14px; }
-    
-    //Sections --------------------------
-    .section-number{ font-size: 2.5em; }
-    .section-title h1{ font-size: 35px; }
-    .section-title h2{ font-size: 14px; }
-    .section-title p{ font-size: 0.9em; }
-    
-    .button-home i{ display: none;}
+@media (max-width: 768px){
+  .main{ padding-top: 100px}
+  p{ font-size: 14px; }
+  
+  //Sections 
+  //////////////////////
+  .section-number{ font-size: 2.5em; }
+  .section-title h1{ font-size: 35px; }
+  .section-title h2{ font-size: 14px; }
+  .section-title p{ font-size: 0.9em; }
+  
+  .button-home i{ display: none;}
 }
 
-// Animations --------------------------
+// Animations 
+////////////////////////////
 .fade-enter-active {
   transition: all .600ms cubic-bezier(1.0, 0.5, 0.8, 1.0);
   animation: fade-in 1s ;
@@ -118,105 +162,116 @@ p{
   /* transition: all 1.4s cubic-bezier(1.0, 0.5, 0.8, 1.0); */
   animation: fade-in 1s reverse;
 }
-
-  
-@keyframes trans{
-    0%{
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    100%{
-        transform: translateY(0px);
-        opacity: 1;
-    }
+.slide-enter-active {
+  animation: slide-in .9s forwards;
+}
+.slide-leave-active {
+animation: slide-in .9s reverse;
 }
 
+@keyframes slide-in {
+  0% {
+      transform: translateX(1000px);
+    }
+  100% {
+      transform: translateX(0px);
+    }
+}
+@keyframes trans{
+  0%{
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 @keyframes overlay{
   0%{
-      transform: translateY(-100%);
+    transform: translateY(-100%);
   }
   50%{
     transform: translateY(50%);
   }
   100%{
-      transform: translateY(100%);
-      opacity: 1;
+    transform: translateY(100%);
+    opacity: 1;
   }
 }
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes fade-out {
   0% {
-      transform: translateX(1000px);
+    transform: translateX(1000px);
   }
   100% {
-      transform: translateX(0px);
-      opacity: 1;
+    transform: translateX(0px);
+    opacity: 1;
   }
 }
 
-// Icons --------------------------
+// Icons 
 @font-face {
-    font-family: 'icomoon';
-    src:  url('fonts/icomoon.eot?kcpm9l');
-    src:  url('fonts/icomoon.eot?kcpm9l#iefix') format('embedded-opentype'),
-      url('fonts/icomoon.ttf?kcpm9l') format('truetype'),
-      url('fonts/icomoon.woff?kcpm9l') format('woff'),
-      url('fonts/icomoon.svg?kcpm9l#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?kcpm9l');
+  src:  url('fonts/icomoon.eot?kcpm9l#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kcpm9l') format('truetype'),
+    url('fonts/icomoon.woff?kcpm9l') format('woff'),
+    url('fonts/icomoon.svg?kcpm9l#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
   
-  [class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: never;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-  
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .icon-arrow-bottom-small-short:before {
-    content: "\e917";
-  }
-  .icon-arrow-top-small-short:before {
-    content: "\e915";
-  }
-  .icon-share:before {
-    content: "\e916";
-  }
-  .icon-arrow-left-small-short:before {
-    content: "\e914";
-  }
-  .icon-play:before {
-    content: "\e909";
-  }
-  .icon-eho:before {
-    content: "\e913";
-  }
-  .icon-arrow-left-big:before {
-    content: "\e911";
-  }
-  .icon-arrow-down-big:before {
-    content: "\e910";
-  }
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-  .icon-arrow-big:before {
-    content: "\e900";
-  }
-  .icon-arrow-small-short:before {
-    content: "\e901";
-  }
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-arrow-bottom-small-short:before {
+  content: "\e917";
+}
+.icon-arrow-top-small-short:before {
+  content: "\e915";
+}
+.icon-share:before {
+  content: "\e916";
+}
+.icon-arrow-left-small-short:before {
+  content: "\e914";
+}
+.icon-play:before {
+  content: "\e909";
+}
+.icon-eho:before {
+  content: "\e913";
+}
+.icon-arrow-left-big:before {
+  content: "\e911";
+}
+.icon-arrow-down-big:before {
+  content: "\e910";
+}
+
+.icon-arrow-big:before {
+  content: "\e900";
+}
+.icon-arrow-small-short:before {
+  content: "\e901";
+}
