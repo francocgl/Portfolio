@@ -47,17 +47,14 @@
                  </nav>
                 <main class="wrapper-container">
                     <transition name="slide">
-                    
                         <div class="wrapper" v-if="wrapper == true">
                             <div class="wrapper-content">
 
                                 <About v-if="modal == 1"/>
                                 
-                                <Services v-if="modal == 2"/>
-                        
-                                <Portfolio v-if="modal == 3"/>
+                                <Portfolio v-if="modal == 2"/>
 
-                                <Contact v-if="modal == 4"/>
+                                <Contact v-if="modal == 3"/>
                         
                             </div>
                         </div>
@@ -71,13 +68,11 @@
                             Instagram
                         </a>
                     </li>
-
                     <li>
                         <a ref="box" href="https://www.linkedin.com/in/franco-cagliolo-5534b0139/" target="_blank">
                             Linkedin
                         </a>
                     </li>
-
                     <li>
                         <a ref="box" href="https://www.behance.net/francocgl" target="_blank">
                             Behance
@@ -90,7 +85,7 @@
                 <span v-if="modal > 1" v-on:click="openWrapper(modal - 1)" >
                     <i class="icon-arrow-left-big back-btn"></i>
                 </span>
-                <span v-if="modal < 4" v-on:click="openWrapper(modal + 1)">
+                <span v-if="modal < 3" v-on:click="openWrapper(modal + 1)">
                    <i class="icon-arrow-big back-btn"></i>
                 </span>
             </nav>
@@ -197,8 +192,6 @@ export default {
         }
   }
 }
-
-
 </script>
 
 <style  lang="scss" scoped>
@@ -217,241 +210,141 @@ export default {
 }
 .wrapper-content{ width: 100%;}
 .wrapper-container .wrapper{
-
     background: rgba(34, 38, 42, 0.60);
-    
     position: absolute;
-
     width: 100%;
-
     z-index: 40;
-
     top: 0;
-
     left: 0;
-
     bottom: 0;
-
     right: 0;
-
     background-attachment: cover;
-
     display: flex;
-    
     align-items: center;
 }
 
 .nav-wrapper{
-    
     position: relative;
-    
     width: 100%;
-    
     grid-column: 1 / span 2;
-
     align-self: center;
-    
     display: flex;
-
     padding: 0 50px;
     
 }
 .nav-list{
-    
     z-index: 4;
-    
     margin:0; 
-    
 }
 .nav-wrapper li a{
-    
     font-size: 5vh;
-    
     color: #fff;
-
-        -webkit-text-stroke: 0.5px var(--darkblue-color);
-    
+    -webkit-text-stroke: 0.5px var(--darkblue-color);
     font-weight: 700;
-    
 }
 
 .nav-wrapper .nav-item span{
-    
     position: relative;
-    
     display: block;
-
     cursor: pointer;
 }
 
 .active a{
     color: #112a40b0 ;
-        
 }
 
-    .nav-wrapper .nav-item span:before{
-    
+.nav-wrapper .nav-item span:before{
     width: 0;
-    
     color: var(--darkblue-color);
-    
     overflow:hidden;
-    
     position: absolute;
-    
     content: attr(data-text);
-    
     transition: all 600ms cubic-bezier(0.84, 0, 0.08, 0.99);
-
-    }
-
-
-/* 
-.active-modal{
-        color: var(--darkblue-color);
-} */
-
+}
 .active-modal a span:before{
     width: 100% !important;
-    
     transition:  all 600ms ease-in !important;
 }
 
 .project-preview-wrapper{
-    
     width: 100%;
-    
     height: 100vh;
-    
     position: relative;
-    
     display: grid;
-
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
 }
 
 .project-preview{
-    
     position: absolute;
-    
     top: 50%;
-    
     left: 65%;
-    
     width: 500px;
-    
     height:700px;
-    
     transform: translate(-50%, -50%);
-
     background-size: cover;
-    
     background-position: 50% 50%;
-    
     overflow: hidden;
 }
 .project-preview span{
-    
     font-size: 6rem;
-    
     font-weight: 600;
-    
     position: absolute;
-
     right: 15%;
-
     top: -20%;
-
     z-index: 2;
 }
 
 .project-preview::before {
     content: '';
-
     z-index: 1;
-
     text-transform: uppercase;
-
     color: var(--grey-color);
-
     font-weight: 700;
-
     position: absolute;
-
     right: 20px;
-
     top: 10px;
-
     font-size: 3em;;
 }
 
-    .menu-times{
-    
-    width: 30px;
-    
-    height: 20px;
-    
+.menu-times{
+    width: 3rem;
+    height: 2rem;
     display: flex;
-    
     justify-content: center;
-
     flex-direction: column;
-    
     justify-self: center;
-    
     grid-column: 6;
-
     z-index: 2000;
-
     transition: 600ms all ease-in-out;
-
     cursor: pointer;
-
-    
 }
 
 .times::before, .times::after{
-    
     content: '';
-    
     position: absolute;
-    
     width: 30px;
-    
     height: 3px;
-    
     background: white;
-    
     transition: all 1s ease-in-out;
-
 }
 
 .times::before{
-    
     transform: rotate( -45deg);
 }
 
 .times::after{
     transform: rotate( 45deg);
-    
 }
 
 .menu-times:hover .times::after, .menu-times:hover .times::before{
     transform: rotate( 0deg);
-
 } 
 
 .closing-animation{
-    
     width: 100%;
-    
     display: grid;
-    
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr;
-    
     align-items: center;
-    
-
     position: absolute;
 }
 
@@ -516,8 +409,9 @@ export default {
     }
 }
 
-@media(max-width: 768px){
-.nav-wrapper-mobile{
+@media screen 
+and(max-width: 768px){
+    .nav-wrapper-mobile{
         display: flex;
         position: absolute;
         left:50%;

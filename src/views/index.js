@@ -7,10 +7,8 @@ import Portfolio from './portfolio';
 
 import Contacto from './contacto';
 
-import Servicios from './servicios';
-
 import Acerca from './acerca';
 
 import Error from './error';
 
-export { verPortfolio, Home, Error, Portfolio, Contacto, Servicios, Acerca };
+export { verPortfolio, Home, Error, Portfolio, Contacto,  Acerca };

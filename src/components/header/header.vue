@@ -181,8 +181,8 @@ header .available .round{
     cursor: pointer;
     grid-column: 6;
     z-index: 200;
-
 }
+
 .menu-bars.white .bars, .menu-bars.white .bars::after,
 .menu-bars.white .bars::before{
     background: #fff;
